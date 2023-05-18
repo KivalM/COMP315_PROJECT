@@ -12,10 +12,10 @@ g++ -O3 -s -static-libgcc -static-libstdc++ ^
     -Ilibs\webview ^
     -Ilibs\webview2\build\native\include ^
     -ladvapi32 -lole32 -lshell32 -lshlwapi -luser32 -lversion ^
-    -o %OUTPUT_DIR%\basic.exe
+    -o %OUTPUT_DIR%\wrath.exe
 
 if %errorlevel% equ 0 (
-    %OUTPUT_DIR%\basic.exe
+    %OUTPUT_DIR%\wrath.exe
 ) else (
     echo Compilation failed.
 )

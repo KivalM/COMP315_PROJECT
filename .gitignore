@@ -1,1 +1,2 @@
-build/basic.exe
+# ignore .exe files
+*.exe

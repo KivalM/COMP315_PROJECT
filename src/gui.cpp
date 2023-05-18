@@ -26,7 +26,9 @@ GUI::GUI()
 void GUI::main_menu()
 {
     // load the main menu
+
     w->set_html(this->html_templates[0]);
+    utils::set_image(w.get(), "background", this->backgrounds[10]);
 
     // set bindings
     w->bind("start", {});
@@ -118,7 +120,7 @@ std::string utils::load_img_to_base64(const std::string &path)
     std::copy(std::istreambuf_iterator<char>(image_file), {}, std::ostreambuf_iterator<char>(oss));
 
     const std::string &file_data = oss.str();
-    std::string base64_encoded = utils::base64_encode(file_data);
+    std::string base64_encoded = utils::construct_img_url(utils::base64_encode(file_data));
 
     return base64_encoded;
 }
@@ -178,4 +180,29 @@ std::string utils::base64_encode(const std::string &input)
     }
 
     return encoded;
+}
+
+std::string utils::replace_placeholder(std::string text, const std::string &placeholder, const std::string &value)
+{
+
+    std::size_t pos = text.find(placeholder);
+    if (pos != std::string::npos)
+    {
+        std::string result = text;
+        result.replace(pos, placeholder.length(), value);
+        return result;
+    }
+    return text;
+}
+
+std::string utils::construct_img_url(const std::string &base64Data)
+{
+    return "data:image/png;base64," + base64Data;
+}
+
+void utils::set_image(webview::webview *w,
+                      const std::string &id, const std::string &base64Data)
+{
+    // set background image css
+    w->eval("document.getElementById('" + id + "').style.backgroundImage = 'url(" + base64Data + ")';");
 }
