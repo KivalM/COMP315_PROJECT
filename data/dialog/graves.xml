@@ -1,0 +1,67 @@
+<dialog>
+    <entry>
+        <id>0</id>
+        <text> HELLO {{name}}</text>
+        <option>
+            <text> HI </text>
+            <next>1</next>
+        </option>
+        <option>
+            <text> HELLO </text>
+            <next>2</next>
+        </option>
+        <option>
+            <text> Bye </text>
+            <next>2</next>
+        </option>
+        <option>
+            <text> etc </text>
+            <next>2</next>
+        </option>
+    </entry>
+
+
+    <entry>
+        <id>1</id>
+        <text> HELLO {{name}}</text>
+        <option>
+            <text> HI </text>
+            <next>1</next>
+        </option>
+        <option>
+            <text> HELLO </text>
+            <next>2</next>
+        </option>
+        <option>
+            <text> Bye </text>
+            <next>2</next>
+        </option>
+        <option>
+            <text> etc </text>
+            <next>2</next>
+        </option>
+    </entry>
+
+    <entry>
+        <id>1</id>
+        <text> HELLO {{name}}</text>
+        <option>
+            <text> HI </text>
+            <next>1</next>
+        </option>
+        <option>
+            <text> HELLO </text>
+            <next>2</next>
+        </option>
+        <option>
+            <text> Bye </text>
+            <next>2</next>
+        </option>
+        <option>
+            <text> etc </text>
+            <next>2</next>
+        </option>
+    </entry>
+
+
+</dialog>
