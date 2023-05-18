@@ -61,6 +61,8 @@
         "xiosbase": "cpp",
         "xlocale": "cpp",
         "xlocinfo": "cpp",
-        "xlocnum": "cpp"
+        "xlocnum": "cpp",
+        "fstream": "cpp",
+        "sstream": "cpp"
     }
 }
