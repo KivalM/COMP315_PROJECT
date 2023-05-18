@@ -3,7 +3,9 @@ set SOURCE_DIR=src
 set OUTPUT_DIR=build
 set SOURCE_FILES=%SOURCE_DIR%\main.cpp ^
                 %SOURCE_DIR%\gui.cpp %SOURCE_DIR%\gui.h ^
-                %SOURCE_DIR%\animate.cpp %SOURCE_DIR%\animate.h
+                %SOURCE_DIR%\animate.cpp %SOURCE_DIR%\animate.h ^
+                %SOURCE_DIR%\character.cpp %SOURCE_DIR%\character.h ^
+                %SOURCE_DIR%\dialog.cpp %SOURCE_DIR%\dialog.h 
 
 g++ %SOURCE_FILES% -std=c++17 -mwindows ^
     -Ilibs\webview ^
