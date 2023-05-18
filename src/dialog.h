@@ -8,6 +8,8 @@ struct Dialog
 {
     // A piece of text that the character says
     string text;
+    string bg_img = "default.png";
+    string char_img = "default.png";
 
     // The next dialog options
     Dialog *option1 = nullptr;
