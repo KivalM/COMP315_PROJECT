@@ -79,13 +79,56 @@ void GUI::game_settings()
 
 void GUI::start_game()
 {
+
     // load the game
     w->set_html(this->html_templates[3]);
-    utils::set_image(w.get(), "background", this->backgrounds[10]);
 
-    // set bindings
-    w->bind("back", {[this](const std::string &r) -> std::string
-                     { this->main_menu(); return ""; }});
+    draw();
+}
+
+void GUI::draw()
+{
+    utils::set_image(w.get(), "background", this->backgrounds[10]);
+    utils::set_text(w.get(), "char-text", this->game->current->text);
+    // if it is not a choice, onclick we will go to the next dialog
+    if (this->game->current->type == DialogType::DIALOG)
+    {
+        w->bind("next", {[this](const std::string &r) -> std::string
+                         { this->game->current = this->game->current->next;
+            draw();
+            return ""; }});
+    }
+    else if (this->game->current->type == DialogType::CHOICE)
+    {
+        // if it is a choice, we ignore the call to next and instead
+        w->bind("next", {[this](const std::string &r) -> std::string
+                         { return ""; }});
+
+        utils::set_text(w.get(), "option_1", this->game->current->option1->text);
+        // only handle the choice callbacks
+        w->bind("option_1", {[this](const std::string &r) -> std::string
+                             { this->game->current =this->game->current->option1->next;
+                                    draw();
+                                   return ""; }});
+
+        utils::set_text(w.get(), "option_2", this->game->current->option2->text);
+        w->bind("option_2", {[this](const std::string &r) -> std::string
+                             { this->game->current =this->game->current->option2->next;
+            draw();
+            return ""; }});
+
+        utils::set_text(w.get(), "option_3", this->game->current->option3->text);
+        w->bind("option_3", {[this](const std::string &r) -> std::string
+                             { this->game->current =this->game->current->option3->next;
+            draw();
+            return ""; }});
+
+        utils::set_text(w.get(), "option_4", this->game->current->option4->text);
+        w->bind("option_4", {[this](const std::string &r) -> std::string
+                             { this->game->current =this->game->current->option4->next;
+            draw();
+            return ""; }});
+    }
 }
 
 void GUI::start()
@@ -181,6 +224,22 @@ vector<string> utils::load_html_templates()
 
     const std::string &game_settings_template = game_settings_oss.str();
     html_templates.push_back(game_settings_template);
+
+    // load game template
+    string game_path = img_dir + "game.html";
+    std::ifstream game_file(game_path);
+
+    if (!game_file)
+    {
+        std::cerr << "Failed to open the game template file: " << game_path << std::endl;
+        return html_templates;
+    }
+
+    std::ostringstream game_oss;
+    std::copy(std::istreambuf_iterator<char>(game_file), {}, std::ostreambuf_iterator<char>(game_oss));
+
+    const std::string &game_template = game_oss.str();
+    html_templates.push_back(game_template);
 
     return html_templates;
 }
@@ -287,4 +346,11 @@ void utils::set_image(webview::webview *w,
 {
     // set background image css
     w->eval("document.getElementById('" + id + "').style.backgroundImage = 'url(" + base64Data + ")';");
+}
+
+void utils::set_text(webview::webview *w,
+                     const std::string &id, const std::string &text)
+{
+    // set text
+    w->eval("document.getElementById('" + id + "').innerHTML = '" + text + "';");
 }

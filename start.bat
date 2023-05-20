@@ -5,7 +5,8 @@ set SOURCE_FILES=%SOURCE_DIR%\main.cpp ^
                 %SOURCE_DIR%\gui.cpp %SOURCE_DIR%\gui.h ^
                 %SOURCE_DIR%\game.cpp %SOURCE_DIR%\game.h ^
                 %SOURCE_DIR%\character.cpp %SOURCE_DIR%\character.h ^
-                %SOURCE_DIR%\dialog.cpp %SOURCE_DIR%\dialog.h 
+                %SOURCE_DIR%\dialog.cpp %SOURCE_DIR%\dialog.h ^
+                %SOURCE_DIR%\stage_1.h
 
 g++ -O3 -s -static-libgcc -static-libstdc++ ^
     %SOURCE_FILES% -std=c++17 -mwindows ^

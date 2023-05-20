@@ -24,6 +24,7 @@ public:
     void how_to_play();
     void game_settings();
     void start_game();
+    void draw();
 
 private:
     std::unique_ptr<webview::webview> w;
@@ -48,6 +49,9 @@ namespace utils
     // function for manipulating the webview background and character sprites
     void set_image(webview::webview *w,
                    const std::string &id, const std::string &base64Data);
+
+    void set_text(webview::webview *w,
+                  const std::string &id, const std::string &text);
 }
 
 #endif

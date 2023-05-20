@@ -2,16 +2,18 @@
 #define GAME_H
 
 #include "character.h"
+#include "dialog.h"
+#include "stage_1.h"
 
 class Game
 {
 public:
     Game();
-    Game(int difficulty);
-
     ~Game(){};
 
     void set_difficulty(int difficulty);
+
+    Dialog *current = &stage_1_root;
 
 private:
     // holds the player's character

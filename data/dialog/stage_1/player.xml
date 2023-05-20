@@ -1,21 +1,9 @@
-<statements>
-    <statement>
-        <!-- Everyone splits into pairs to search the mansion for elizabeth -->
-        <question>Who were you with when the murder happened</question>
-        <answer>Enrique<answer/> <!-- ex cop so probably remembers who he was with -->
-        <answer>James<answer/> <!-- mentioned he could not see very well in the dark so would not have realized you dissapeared -->        
-        <answer>Earl<answer/>  <!-- talks alot so would remember your voice -->       
-        <answer>Katherine<answer/>        
-        <answer>John<answer/>        
-    </statement>
+<questions>
+    <question id="1" type="1" text="Hello, I'm the player.">
+        <answer id="1" text="Hello, I'm the NPC.">
+            <next id="2" />
+        </answer>
+    </question>
 
-    <statement>
-        <!-- Everyone mentioned the areas that they visited together answer needs to coincide with your pair and the area you chose -->
-        <question>Who were you with when the murder happened</question>
-        <answer>Enrique<answer/> <!-- ex cop so probably remembers who he was with -->
-        <answer>James<answer/> <!-- mentioned he could not see very well in the dark so would not have realized you dissapeared -->        
-        <answer>Earl<answer/>  <!-- talks alot so would remember your voice -->       
-        <answer>Katherine<answer/>        
-        <answer>John<answer/>        
-    </statement>
-</statements>
+
+</questions>
