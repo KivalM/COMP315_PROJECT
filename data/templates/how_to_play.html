@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id="back" onclick="window.back()">Back</div>
+    <div id="background">
+        <div id="overlay">
+            <h1 id="title">Silent Shadowns</h1>
+            <h2 id="subtitle">How to play</h2>
+
+            <p class="text">
+                Every character will have a question pool. Every question answer pair will include some information on
+                either the murder
+                or how to communicate with a character. For each stage you are permitted a limited number of questions
+                you can ask. Ask
+                the question in the wrong tone, or a question that already had an answer given to you, or a question
+                that seems
+                irrelevant to the mystery to your superiors, or questions that provoke a hostile response will show the
+                department you
+                are incapable.
+                You will also be given an option to point out a contradiction in something a character says, this option
+                will be used as
+                a lifeline and will either increase the bar significantly or decrease it, it is the only thing that can
+                decrease the
+                bar.
+                The difficulty level determines how fast or slow the bar fills up.
+                Fill up the'ìncomepetence' bar and you will be taken off the investigation.
+            </p>
+
+
+        </div>
+</body>
+
+</html>
+
+<style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    /* hide scrollbars but keep functionality */
+    html {
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    /* fixed background image even on scroll */
+    #background {
+
+        /* background-image: url("../img/bg/10.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: f;
+        height: 100vh;
+        width: 100vw; */
+        background-image: url("../img/bg/10.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        height: 100vh;
+        width: 100vw;
+
+
+
+    }
+
+    #overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100vh;
+        width: 100vw;
+    }
+
+    #title {
+        font-family: 'Satisfy', cursive;
+        font-size: 2vw;
+        color: white;
+        text-align: center;
+        margin-top: 0;
+        padding-top: 10vh;
+    }
+
+    #subtitle {
+        font-family: 'Satisfy', cursive;
+        font-size: 2vw;
+        color: white;
+        text-align: center;
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    /* fixed back button on top left */
+    #back {
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 1em;
+        padding: 1em;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-family: 'Satisfy', cursive;
+        font-size: 2vw;
+        cursor: pointer;
+    }
+
+    .text {
+        width: 60%;
+        margin: auto;
+
+        font-family: 'Satisfy', cursive;
+        font-size: 2vw;
+        color: white;
+        text-align: center;
+        margin-top: 0;
+        padding-top: 0;
+    }
+</style>

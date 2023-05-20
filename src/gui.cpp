@@ -26,16 +26,28 @@ GUI::GUI()
 void GUI::main_menu()
 {
     // load the main menu
-
     w->set_html(this->html_templates[0]);
     utils::set_image(w.get(), "background", this->backgrounds[10]);
 
     // set bindings
     w->bind("start", {});
-    w->bind("about", {});
+    w->bind("how_to_play", {[this](const std::string &r) -> std::string
+                            { this->how_to_play(); return ""; }});
     w->bind(
         "quit", [this](const std::string &r) -> std::string
         { w->terminate(); return ""; });
+}
+
+void GUI::how_to_play()
+{
+    // load the how to play menu
+
+    w->set_html(this->html_templates[1]);
+    utils::set_image(w.get(), "background", this->backgrounds[10]);
+
+    // set bindings
+    w->bind("back", {[this](const std::string &r) -> std::string
+                     { this->main_menu(); return ""; }});
 }
 
 void GUI::start()
@@ -99,6 +111,22 @@ vector<string> utils::load_html_templates()
 
     const std::string &menu_template = menu_oss.str();
     html_templates.push_back(menu_template);
+
+    // load how to play template
+    string how_to_play_path = img_dir + "how_to_play.html";
+    std::ifstream how_to_play_file(how_to_play_path);
+
+    if (!how_to_play_file)
+    {
+        std::cerr << "Failed to open the how to play template file: " << how_to_play_path << std::endl;
+        return html_templates;
+    }
+
+    std::ostringstream how_to_play_oss;
+    std::copy(std::istreambuf_iterator<char>(how_to_play_file), {}, std::ostreambuf_iterator<char>(how_to_play_oss));
+
+    const std::string &how_to_play_template = how_to_play_oss.str();
+    html_templates.push_back(how_to_play_template);
 
     return html_templates;
 }

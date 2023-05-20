@@ -19,6 +19,7 @@ public:
     void start();
     void hide();
     void main_menu();
+    void how_to_play();
 
 private:
     std::unique_ptr<webview::webview> w;
@@ -39,6 +40,7 @@ namespace utils
     std::string construct_img_url(const std::string &base64Data);
     std::string replace_placeholder(std::string text, const std::string &placeholder, const std::string &value);
 
+    // function for manipulating the webview background and character sprites
     void set_image(webview::webview *w,
                    const std::string &id, const std::string &base64Data);
 }
