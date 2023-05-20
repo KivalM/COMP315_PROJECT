@@ -12,6 +12,8 @@
 #include <algorithm>
 using namespace std;
 
+#include "game.h"
+
 class GUI
 {
 public:
@@ -20,12 +22,15 @@ public:
     void hide();
     void main_menu();
     void how_to_play();
+    void game_settings();
+    void start_game();
 
 private:
     std::unique_ptr<webview::webview> w;
     vector<string> backgrounds;
     vector<string> character_sprites;
     vector<string> html_templates;
+    Game *game = new Game();
 };
 
 namespace utils

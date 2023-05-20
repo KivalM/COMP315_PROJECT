@@ -7,7 +7,11 @@ class Game
 {
 public:
     Game();
+    Game(int difficulty);
+
     ~Game(){};
+
+    void set_difficulty(int difficulty);
 
 private:
     // holds the player's character

@@ -13,11 +13,8 @@ public:
     // The image id of the character
     int img_id = 0;
 
-    // how suspicious they are of the player
-    int suspicion = 0;
-
-    Character(string name);
-    ~Character();
+    Character(string name){};
+    ~Character(){};
 };
 
 #endif // CHARACTER

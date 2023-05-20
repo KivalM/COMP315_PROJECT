@@ -30,7 +30,8 @@ void GUI::main_menu()
     utils::set_image(w.get(), "background", this->backgrounds[10]);
 
     // set bindings
-    w->bind("start", {});
+    w->bind("start", {[this](const std::string &r) -> std::string
+                      { this->game_settings(); return ""; }});
     w->bind("how_to_play", {[this](const std::string &r) -> std::string
                             { this->how_to_play(); return ""; }});
     w->bind(
@@ -43,6 +44,43 @@ void GUI::how_to_play()
     // load the how to play menu
 
     w->set_html(this->html_templates[1]);
+    utils::set_image(w.get(), "background", this->backgrounds[10]);
+
+    // set bindings
+    w->bind("back", {[this](const std::string &r) -> std::string
+                     { this->main_menu(); return ""; }});
+}
+
+void GUI::game_settings()
+{
+    // load the game settings menu
+    w->set_html(this->html_templates[2]);
+    utils::set_image(w.get(), "background", this->backgrounds[10]);
+
+    // set bindings
+    w->bind("back", {[this](const std::string &r) -> std::string
+                     { this->main_menu(); return ""; }});
+
+    w->bind("easy", {[this](const std::string &r) -> std::string
+                     {this->game->set_difficulty(0);
+                      this->start_game(); 
+                      return ""; }});
+
+    w->bind("medium", {[this](const std::string &r) -> std::string
+                       {this->game->set_difficulty(1);
+                        this->start_game(); 
+                        return ""; }});
+
+    w->bind("hard", {[this](const std::string &r) -> std::string
+                     {this->game->set_difficulty(2);
+                        this->start_game(); 
+                        return ""; }});
+}
+
+void GUI::start_game()
+{
+    // load the game
+    w->set_html(this->html_templates[3]);
     utils::set_image(w.get(), "background", this->backgrounds[10]);
 
     // set bindings
@@ -127,6 +165,22 @@ vector<string> utils::load_html_templates()
 
     const std::string &how_to_play_template = how_to_play_oss.str();
     html_templates.push_back(how_to_play_template);
+
+    // load game settings template
+    string game_settings_path = img_dir + "game_settings.html";
+    std::ifstream game_settings_file(game_settings_path);
+
+    if (!game_settings_file)
+    {
+        std::cerr << "Failed to open the game settings template file: " << game_settings_path << std::endl;
+        return html_templates;
+    }
+
+    std::ostringstream game_settings_oss;
+    std::copy(std::istreambuf_iterator<char>(game_settings_file), {}, std::ostreambuf_iterator<char>(game_settings_oss));
+
+    const std::string &game_settings_template = game_settings_oss.str();
+    html_templates.push_back(game_settings_template);
 
     return html_templates;
 }
