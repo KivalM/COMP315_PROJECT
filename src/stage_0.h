@@ -2,6 +2,7 @@
 #define STAGE_0_H
 #include <string>
 #include "dialog.h"
+#include "stage_1.h"
 
 // inline extern Dialog dialog_0_16 = create_npc_dialog("This is demo text 6", 4, 5, nullptr);
 // inline extern Dialog dialog_0_14 = create_npc_dialog("You selected an option previously", 1, 14, &dialog_0_16);
@@ -18,7 +19,7 @@
 
 // inline extern Dialog dialog_0_9 = create_dialog_choice("Pick an option", 1, 14, &choice_0_9_a, &choice_0_9_b, &choice_0_9_c, &choice_0_9_d);
 
-inline extern Dialog dialog_0_20 = create_npc_dialog("Prepare yourself, Detective Conan, for the path to redemption will be fraught with challenges and deception. The fate of your career rests upon your shoulders as you step into the world of Elizabeth Killingsworth's murder, determined to solve the mystery and emerge victorious once again.", 1, 14, nullptr);
+inline extern Dialog dialog_0_20 = create_npc_dialog("Prepare yourself, Detective Conan, for the path to redemption will be fraught with challenges and deception. The fate of your career rests upon your shoulders as you step into the world of Elizabeth Killingsworth's murder, determined to solve the mystery and emerge victorious once again.", 1, 14, &stage_1_root);
 inline extern Dialog dialog_0_19 = create_npc_dialog("As the clock ticks, the stakes grow higher. Failure is not an option. In this race against time, will Detective Conan rise from the ashes, or be forever consumed by the shadows that threaten to engulf him?", 1, 14, &dialog_0_20);
 inline extern Dialog dialog_0_18 = create_npc_dialog("To save his career, to reclaim his tarnished name, Detective Conan must unravel the truth behind Elizabeth's murder and expose the darkness lurking beneath the surface.", 1, 14, &dialog_0_19);
 inline extern Dialog dialog_0_17 = create_npc_dialog("Scene: Conan looks at a photo of Elizabeth Killingsworth, determination etched on his face.", 1, 14, &dialog_0_18);
