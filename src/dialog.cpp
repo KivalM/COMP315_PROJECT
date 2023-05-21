@@ -13,7 +13,7 @@ Dialog create_npc_dialog(string text, int character, int bg, Dialog *next)
     Dialog d;
     d.text = text;
     d.speaking = character;
-    d.char_to_draw = -1;
+    d.char_to_draw = character;
     d.bg = bg;
     d.type = DIALOG;
     d.next = next;

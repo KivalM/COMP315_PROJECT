@@ -4,6 +4,8 @@
 #include "character.h"
 #include "dialog.h"
 #include "stage_0.h"
+#include "stage_1.h"
+
 #include <thread>
 #include <chrono>
 

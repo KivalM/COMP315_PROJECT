@@ -98,14 +98,17 @@ void GUI::draw()
     // set the background
     utils::set_image(w.get(), "background", this->backgrounds[this->game->current->bg]);
 
-    if (this->game->current->char_to_draw != -1)
+    if ((this->game->current->char_to_draw != -1))
     {
-        // unhide the character
-        utils::set_hidden(w.get(), "char-img", false);
+        if (this->game->characters[this->game->current->char_to_draw].image != -1)
+        {
+            // unhide the character
+            utils::set_hidden(w.get(), "char-img", false);
 
-        // set the character sprite
-        Character *c = &this->game->characters[this->game->current->char_to_draw];
-        utils::set_image(w.get(), "char-img", this->character_sprites[c->image]);
+            // set the character sprite
+            Character *c = &this->game->characters[this->game->current->char_to_draw];
+            utils::set_image(w.get(), "char-img", this->character_sprites[c->image]);
+        }
     }
     else
     {
@@ -114,10 +117,7 @@ void GUI::draw()
 
     if (this->game->current->speaking != -1)
     {
-
-        // set the character sprite
         Character *c = &this->game->characters[this->game->current->speaking];
-
         // set the character name
         utils::set_text(w.get(), "char-name", c->name);
     }
