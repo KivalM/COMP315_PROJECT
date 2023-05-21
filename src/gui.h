@@ -52,6 +52,8 @@ namespace utils
 
     void set_text(webview::webview *w,
                   const std::string &id, const std::string &text);
+    void set_hidden(webview::webview *w,
+                    const std::string &id, bool hidden);
 }
 
 #endif

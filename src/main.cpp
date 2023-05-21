@@ -39,7 +39,7 @@ int WINAPI WinMain(HINSTANCE hInt, HINSTANCE hPrevInst, LPSTR lpCmdLine,
 {
   RedirectIOToConsole();
 
-  std::cout << "Starting WRATH..." << std::endl;
+  std::cout << "Starting Silent Shadows..." << std::endl;
 
   // initialize the GUI
   GUI gui;

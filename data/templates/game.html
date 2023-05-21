@@ -4,13 +4,21 @@
 <head></head>
 
 <body onclick="window.next()">
-    <div id="char-name">Character name</div>
-    <div id="char-text">THIS IS FROM THE FILE</div>
 
-    <div id="option_1" onclick="window.option_1()">ONE</div>
-    <div id="option_2" onclick="window.option_2()">TWO</div>
-    <div id="option_3" onclick="window.option_3()">THREE</div>
-    <div id="option_4" onclick="window.option_4()">FOUR</div>
+    <div id="background">
+
+        <div id="text-background">
+            <div id="char-name">Character name</div>
+            <div id="char-text">THIS IS FROM THE FILE</div>
+
+            <div id="options">
+                <div id="option_1" onclick="window.option_1()">ONE</div>
+                <div id="option_2" onclick="window.option_2()">TWO</div>
+                <div id="option_3" onclick="window.option_3()">THREE</div>
+                <div id="option_4" onclick="window.option_4()">FOUR</div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
@@ -33,53 +41,59 @@
         width: 100vw;
     }
 
-    #overlay {
-        background-color: rgba(0, 0, 0, 0.5);
-        height: 100vh;
+    #text-background {
+        bottom: 0;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.6);
+        height: 45vh;
         width: 100vw;
     }
 
-    #title {
+    #char-name {
         font-family: 'Satisfy', cursive;
-        font-size: 5vw;
+        font-size: 2vw;
         color: white;
         text-align: center;
         margin-top: 0;
-        padding-top: 10vh;
+        padding-top: 1vh;
     }
 
-    #subtitle {
+    #char-text {
         font-family: 'Satisfy', cursive;
-        font-size: 3vw;
+        font-size: 1.5vw;
         color: white;
         text-align: center;
         margin-top: 0;
-        padding-top: 0;
+        padding-top: 1vh;
     }
 
-    #menu {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: start;
-        padding-top: 20vh;
-
-    }
-
-    .menu-item {
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-        padding: 10px;
-        margin: 10px;
-        width: 50vw;
-        text-align: center;
+    #options {
         font-family: 'Satisfy', cursive;
-        font-size: 3vw;
+        font-size: 1.5vw;
         color: white;
+        text-align: center;
+        margin-top: 0;
+        padding-top: 1vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 1vw;
+        /* align to bottom of page */
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 25vh;
+    }
+
+    #options>div {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 1vw;
+        border-radius: 1vw;
         cursor: pointer;
-    }
 
-    .menu-item:hover {
-        background-color: rgba(0, 0, 0, 0.8);
+        /* center text vertically */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>

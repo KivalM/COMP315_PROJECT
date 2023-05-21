@@ -88,11 +88,34 @@ void GUI::start_game()
 
 void GUI::draw()
 {
-    utils::set_image(w.get(), "background", this->backgrounds[10]);
+    // the the background
+    utils::set_image(w.get(), "background", this->backgrounds[this->game->current->bg]);
+
+    if (this->game->current->character != -1)
+    {
+        // unhide the character
+        utils::set_hidden(w.get(), "character", false);
+
+        // set the character sprite
+        Character *c = &this->game->characters[this->game->current->character];
+        utils::set_image(w.get(), "character", this->character_sprites[c->image]);
+
+        // set the character name
+        utils::set_text(w.get(), "char-name", c->name);
+    }
+    else
+    {
+        utils::set_hidden(w.get(), "character", true);
+    }
+
+    // set the character name
     utils::set_text(w.get(), "char-text", this->game->current->text);
-    // if it is not a choice, onclick we will go to the next dialog
+
+    // set callbacks
     if (this->game->current->type == DialogType::DIALOG)
     {
+        // if it is not a choice, onclick we will go to the next dialog
+        utils::set_hidden(w.get(), "options", true);
         w->bind("next", {[this](const std::string &r) -> std::string
                          { this->game->current = this->game->current->next;
             draw();
@@ -100,11 +123,14 @@ void GUI::draw()
     }
     else if (this->game->current->type == DialogType::CHOICE)
     {
+        utils::set_hidden(w.get(), "options", false);
+
         // if it is a choice, we ignore the call to next and instead
         w->bind("next", {[this](const std::string &r) -> std::string
                          { return ""; }});
 
         utils::set_text(w.get(), "option_1", this->game->current->option1->text);
+
         // only handle the choice callbacks
         w->bind("option_1", {[this](const std::string &r) -> std::string
                              { this->game->current =this->game->current->option1->next;
@@ -353,4 +379,11 @@ void utils::set_text(webview::webview *w,
 {
     // set text
     w->eval("document.getElementById('" + id + "').innerHTML = '" + text + "';");
+}
+
+void utils::set_hidden(webview::webview *w,
+                       const std::string &id, bool hidden)
+{
+    // set hidden
+    w->eval("document.getElementById('" + id + "').style.visibility = '" + (hidden ? "hidden" : "visible") + "';");
 }

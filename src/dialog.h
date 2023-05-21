@@ -25,8 +25,11 @@ struct Dialog
     // A piece of text that the character says
     string text;
 
-    string bg_img = "default.png";
-    string char_img = "default.png";
+    // the index of the background to display
+    int bg = 0;
+
+    // the id of the character to display
+    int character = 0;
 
     // The type of dialog
     DialogType type = DIALOG;
@@ -41,6 +44,6 @@ struct Dialog
     Choice *option4 = nullptr;
 };
 
-Dialog create_dialog(string text, string character, string bg, Dialog *next);
+Dialog create_dialog(string text, int character, int bg, Dialog *next);
 
 #endif // DIALOG_H

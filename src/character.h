@@ -41,10 +41,10 @@ public:
     string name = "";
 
     // The image id of the character
-    int img_id = 0;
+    int image = 0;
 
-    Character(string name){};
-    ~Character(){};
+    Character();
+    Character(string name);
 
 private:
     // The type of character
@@ -52,7 +52,7 @@ private:
 
     // How likely they to give the player information
     // if this gets too high, they will not talk to the player
-    int trust = 0;
+    int mistrust = 0;
 };
 
 #endif // CHARACTER
