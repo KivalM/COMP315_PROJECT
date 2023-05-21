@@ -27,7 +27,7 @@ void GUI::main_menu()
 {
     // load the main menu
     w->set_html(this->html_templates[0]);
-    utils::set_image(w.get(), "background", this->backgrounds[10]);
+    utils::set_image(w.get(), "background", this->backgrounds[11]);
 
     // set bindings
     w->bind("start", {[this](const std::string &r) -> std::string
@@ -88,7 +88,14 @@ void GUI::start_game()
 
 void GUI::draw()
 {
-    // the the background
+    // unbind all the buttons
+    w->unbind("next");
+    w->unbind("option_1");
+    w->unbind("option_2");
+    w->unbind("option_3");
+    w->unbind("option_4");
+
+    // set the background
     utils::set_image(w.get(), "background", this->backgrounds[this->game->current->bg]);
 
     if (this->game->current->character != -1)
@@ -114,22 +121,23 @@ void GUI::draw()
     // set callbacks
     if (this->game->current->type == DialogType::DIALOG)
     {
+        cout << "Drawing Dialog" << endl;
         // if it is not a choice, onclick we will go to the next dialog
         utils::set_hidden(w.get(), "options", true);
+
         w->bind("next", {[this](const std::string &r) -> std::string
-                         { this->game->current = this->game->current->next;
+                         { cout << "called next"<< endl;this->game->current = this->game->current->next;
             draw();
             return ""; }});
     }
     else if (this->game->current->type == DialogType::CHOICE)
     {
+        cout << "Drawing Choice" << endl;
         utils::set_hidden(w.get(), "options", false);
 
         // if it is a choice, we ignore the call to next and instead
-        w->bind("next", {[this](const std::string &r) -> std::string
-                         { return ""; }});
 
-        utils::set_text(w.get(), "option_1", this->game->current->option1->text);
+         utils::set_text(w.get(), "option_1", this->game->current->option1->text);
 
         // only handle the choice callbacks
         w->bind("option_1", {[this](const std::string &r) -> std::string
@@ -152,6 +160,15 @@ void GUI::draw()
         utils::set_text(w.get(), "option_4", this->game->current->option4->text);
         w->bind("option_4", {[this](const std::string &r) -> std::string
                              { this->game->current =this->game->current->option4->next;
+            draw();
+            return ""; }});
+    }
+    else
+    {
+        cout << "Drawing End" << endl;
+        utils::set_hidden(w.get(), "options", true);
+        w->bind("next", {[this](const std::string &r) -> std::string
+                         { this->game->current = this->game->current->next;
             draw();
             return ""; }});
     }

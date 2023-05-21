@@ -3,7 +3,8 @@
 
 #include "dialog.h"
 
-inline extern Dialog dialog_1_15 = create_dialog("You selected an option previously", 1, 1, nullptr);
+inline extern Dialog dialog_1_16 = create_dialog("This is demo text 6", 4, 5, nullptr);
+inline extern Dialog dialog_1_15 = create_dialog("You selected an option previously", 1, 1, &dialog_1_16);
 
 inline extern Dialog dialog_1_14 = create_dialog("You clicked option 1", 1, 1, &dialog_1_15);
 inline extern Dialog dialog_1_13 = create_dialog("You clicked option 2", 1, 1, &dialog_1_15);
