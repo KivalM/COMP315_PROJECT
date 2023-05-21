@@ -29,7 +29,10 @@ struct Dialog
     int bg = 0;
 
     // the id of the character to display
-    int character = 0;
+    int speaking = 0;
+
+    // the id of the character to display
+    int char_to_draw = 0;
 
     // The type of dialog
     DialogType type = DIALOG;
@@ -44,7 +47,8 @@ struct Dialog
     Choice *option4 = nullptr;
 };
 
-Dialog create_dialog(string text, int character, int bg, Dialog *next);
+Dialog create_npc_dialog(string text, int character, int bg, Dialog *next);
+Dialog create_player_dialog(string text, int character, int bg, Dialog *next);
 Dialog create_dialog_choice(string text, int character, int bg, Choice *option1, Choice *option2, Choice *option3, Choice *option4);
 Dialog create_stage_end(string text, int character, int bg);
 Dialog create_end(string text, int character, int bg);

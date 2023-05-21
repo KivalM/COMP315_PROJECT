@@ -98,24 +98,34 @@ void GUI::draw()
     // set the background
     utils::set_image(w.get(), "background", this->backgrounds[this->game->current->bg]);
 
-    if (this->game->current->character != -1)
+    if (this->game->current->char_to_draw != -1)
     {
         // unhide the character
         utils::set_hidden(w.get(), "char-img", false);
 
         // set the character sprite
-        Character *c = &this->game->characters[this->game->current->character];
+        Character *c = &this->game->characters[this->game->current->char_to_draw];
         utils::set_image(w.get(), "char-img", this->character_sprites[c->image]);
-
-        // set the character name
-        utils::set_text(w.get(), "char-name", c->name);
     }
     else
     {
         utils::set_hidden(w.get(), "char-img", true);
     }
 
-    // set the character name
+    if (this->game->current->speaking != -1)
+    {
+
+        // set the character sprite
+        Character *c = &this->game->characters[this->game->current->speaking];
+
+        // set the character name
+        utils::set_text(w.get(), "char-name", c->name);
+    }
+
+    // set the character text
+    cout << "Setting text to: " << this->game->current->text << endl;
+    // sleep for 1 second
+    std::this_thread::sleep_for(std::chrono::milliseconds(150));
     utils::set_text(w.get(), "char-text", this->game->current->text);
 
     // set callbacks
@@ -137,7 +147,7 @@ void GUI::draw()
 
         // if it is a choice, we ignore the call to next and instead
 
-         utils::set_text(w.get(), "option_1", this->game->current->option1->text);
+        utils::set_text(w.get(), "option_1", this->game->current->option1->text);
 
         // only handle the choice callbacks
         w->bind("option_1", {[this](const std::string &r) -> std::string
@@ -394,8 +404,18 @@ void utils::set_image(webview::webview *w,
 void utils::set_text(webview::webview *w,
                      const std::string &id, const std::string &text)
 {
+
+    // escape single quotes
+    std::string escaped_text = text;
+    std::size_t pos = 0;
+    while ((pos = escaped_text.find("'", pos)) != std::string::npos)
+    {
+        escaped_text.replace(pos, 1, "\\'");
+        pos += 2;
+    }
+
     // set text
-    w->eval("document.getElementById('" + id + "').innerHTML = '" + text + "';");
+    w->eval("document.getElementById('" + id + "').innerHTML = '" + escaped_text + "';");
 }
 
 void utils::set_hidden(webview::webview *w,

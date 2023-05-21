@@ -3,7 +3,9 @@
 
 #include "character.h"
 #include "dialog.h"
-#include "stage_1.h"
+#include "stage_0.h"
+#include <thread>
+#include <chrono>
 
 class Game
 {
@@ -13,7 +15,7 @@ public:
 
     void set_difficulty(int difficulty);
 
-    Dialog *current = &stage_1_root;
+    Dialog *current = &stage_0_root;
 
     // holds the player's character
     Character *player;
