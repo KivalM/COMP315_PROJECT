@@ -44,7 +44,7 @@ public:
     int image = 0;
 
     Character();
-    Character(string name);
+    Character(string name, int img_idx);
 
 private:
     // The type of character

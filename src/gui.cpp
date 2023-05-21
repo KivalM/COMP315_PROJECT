@@ -94,18 +94,18 @@ void GUI::draw()
     if (this->game->current->character != -1)
     {
         // unhide the character
-        utils::set_hidden(w.get(), "character", false);
+        utils::set_hidden(w.get(), "char-img", false);
 
         // set the character sprite
         Character *c = &this->game->characters[this->game->current->character];
-        utils::set_image(w.get(), "character", this->character_sprites[c->image]);
+        utils::set_image(w.get(), "char-img", this->character_sprites[c->image]);
 
         // set the character name
         utils::set_text(w.get(), "char-name", c->name);
     }
     else
     {
-        utils::set_hidden(w.get(), "character", true);
+        utils::set_hidden(w.get(), "char-img", true);
     }
 
     // set the character name

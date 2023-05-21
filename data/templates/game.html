@@ -6,10 +6,11 @@
 <body onclick="window.next()">
 
     <div id="background">
-
+        <div id="char-img"></div>
         <div id="text-background">
             <div id="char-name">Character name</div>
             <div id="char-text">THIS IS FROM THE FILE</div>
+
 
             <div id="options">
                 <div id="option_1" onclick="window.option_1()">ONE</div>
@@ -47,6 +48,18 @@
         background-color: rgba(0, 0, 0, 0.6);
         height: 45vh;
         width: 100vw;
+    }
+
+    #char-img {
+        background-image: url("../img/char/1.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom right;
+        position: absolute;
+        height: 80vh;
+        width: 60vh;
+        bottom: 0;
+        right: 0;
     }
 
     #char-name {
