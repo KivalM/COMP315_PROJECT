@@ -45,5 +45,10 @@ struct Dialog
 };
 
 Dialog create_dialog(string text, int character, int bg, Dialog *next);
+Dialog create_dialog_choice(string text, int character, int bg, Choice *option1, Choice *option2, Choice *option3, Choice *option4);
+Dialog create_stage_end(string text, int character, int bg);
+Dialog create_end(string text, int character, int bg);
+
+Choice create_choice(string text, Dialog *next);
 
 #endif // DIALOG_H
