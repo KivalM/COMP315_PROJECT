@@ -44,6 +44,20 @@
         width: 100%;
     }
 
+    /* make all text unselectable */
+    * {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        /* make all text unselectable (bonus) */
+        -webkit-touch-callout: none;
+        -moz-touch-callout: none;
+        -ms-touch-callout: none;
+        touch-callout: none;
+    }
+
     /* hide scrollbars but keep functionality */
     html {
         overflow: scroll;
