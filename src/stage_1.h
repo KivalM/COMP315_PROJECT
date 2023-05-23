@@ -40,6 +40,7 @@ inline extern string q_neutral[] = {
     "Do you have any knowledge of anyone who might have wanted to harm Elizabeth?",
     "Are there any peculiar habits or routines that Elizabeth had that you can share?",
     "Can you recall any recent interactions or conversations you had with Elizabeth?"};
+
 inline extern string michael_neutral[] = {
     "I'm Michael, and I've known Elizabeth for some time now. We had a business arrangement regarding her farm.",
     "I was with Elizabeth in the Rose Garden, exploring the farm and discussing our business deal.",
@@ -51,6 +52,7 @@ inline extern string michael_neutral[] = {
     "I can't say for certain. Elizabeth seemed to have a lot of acquaintances due to her involvement in the community and her farm.",
     "I'm not sure about any peculiar habits, but she was passionate about her farm and dedicated a lot of time to its upkeep.",
     "Our recent conversations mainly revolved around the sale of her farm and the financial aspects surrounding it."};
+
 inline extern string q_aggressive[] = {
     "Why were you at the scene of the crime? What were you planning to do?",
     "Are you hiding anything about your relationship with Elizabeth that might be relevant to the investigation?",
@@ -62,6 +64,7 @@ inline extern string q_aggressive[] = {
     "Have you ever been involved in any criminal activities in the past? Are you trying to cover up your own tracks?",
     "Do you have a history of violence or conflicts with Elizabeth or anyone else related to this case?",
     "How can we be sure that you didn't tamper with the crime scene or hide any evidence?"};
+
 inline extern string michael_aggressive[] = {
     "I-I was there to discuss the sale of Elizabeth's farm. We had arranged to meet, and I was hoping to finalize the details.",
     "N-No, I'm not hiding anything. Our relationship was primarily centered around the business deal, and I have nothing to hide.",
@@ -85,6 +88,7 @@ inline extern string q_friendly[] = {
     "What do you think was the most significant impact Elizabeth had on the people around her?",
     "Do you have any theories or ideas about who might have wanted to harm Elizabeth?",
     "Is there anything else you would like to share with me that could assist in solving this case?"};
+
 inline extern string michael_friendly[] = {
     "I've known Elizabeth for a few months, but we weren't particularly close. I didn't have many personal interactions or memories with her.",
     "Our relationship was more on the acquaintance side. We interacted mainly regarding the potential sale of her farm.",
