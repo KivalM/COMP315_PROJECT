@@ -5,30 +5,25 @@
 #include "dialog.h"
 #include "stage_1.h"
 
-inline extern Dialog dialog_0_21 = create_npc_dialog("A short while later", 1, 14, &stage_1_root);
-
-inline extern Dialog dialog_0_20 = create_npc_dialog("Prepare yourself, Detective Conan, for the path to redemption will be fraught with challenges and deception. The fate of your career rests upon your shoulders as you step into the world of Elizabeth Killingsworth's murder, determined to solve the mystery and emerge victorious once again.", 1, 14, &stage_1_root);
-inline extern Dialog dialog_0_19 = create_npc_dialog("As the clock ticks, the stakes grow higher. Failure is not an option. In this race against time, will Detective Conan rise from the ashes, or be forever consumed by the shadows that threaten to engulf him?", 1, 14, &dialog_0_20);
-inline extern Dialog dialog_0_18 = create_npc_dialog("To save his career, to reclaim his tarnished name, Detective Conan must unravel the truth behind Elizabeth's murder and expose the darkness lurking beneath the surface.", 1, 14, &dialog_0_19);
-inline extern Dialog dialog_0_17 = create_npc_dialog("(Conan looks at a photo of Elizabeth Killingsworth, determination etched on his face.)", 1, 14, &dialog_0_18);
-inline extern Dialog dialog_0_16 = create_npc_dialog("With every eye upon him, Conan must navigate the treacherous labyrinth of the elite, where lies intertwine with ambition, and every whisper hides a secret.", 1, 14, &dialog_0_17);
-inline extern Dialog dialog_0_15 = create_npc_dialog("(Conan walks through the doors of the department, greeted by skeptical glances from his colleagues.)", 1, 14, &dialog_0_16);
-inline extern Dialog dialog_0_14 = create_npc_dialog("But the department's trust is fragile, and Conan knows that one misstep, one sign of incompetence, will shatter his last chance at redemption.", 1, 14, &dialog_0_15);
-inline extern Dialog dialog_0_13 = create_npc_dialog("(Conan stands in front of a mirror, adjusting his tie, ready to embark on his quest for redemption.)", 1, 14, &dialog_0_14);
-inline extern Dialog dialog_0_12 = create_npc_dialog("It is within this darkness that an opportunity for redemption presents itself. The department, seeking to salvage their reputation, places Conan at the center of a high-stakes investigation – the murder of Elizabeth Killingsworth.", 1, 14, &dialog_0_13);
-inline extern Dialog dialog_0_11 = create_npc_dialog("(Conan glances at the news report, a spark of determination igniting in his eyes.)", 1, 14, &dialog_0_12);
-inline extern Dialog dialog_0_10 = create_npc_dialog("In a shocking turn of events, the prominent socialite and business magnate, Elizabeth Killingsworth, has been found dead under mysterious circumstances.", 8, 14, &dialog_0_11);
-inline extern Dialog dialog_0_9 = create_npc_dialog("(A news report plays on a television, highlighting the murder of Elizabeth Killingsworth.)", 1, 14, &dialog_0_10);
-inline extern Dialog dialog_0_8 = create_npc_dialog("Now, haunted by the weight of his past glory, Conan finds himself standing at the precipice of ruin. The once-esteemed detective has become a mere shadow of his former self, relegated to a forgotten corner of the department.", 1, 14, &dialog_0_9);
-inline extern Dialog dialog_0_7 = create_npc_dialog("(Conan's office, where his desk is adorned with framed newspaper clippings of past successes.)", 1, 14, &dialog_0_8);
-inline extern Dialog dialog_0_6 = create_npc_dialog("The world celebrated his triumph, as he unraveled the enigma of the Pink Panther, a case that had confounded countless investigators. But since that fateful day, Conan's achievements have vanished like smoke in the wind.", 1, 14, &dialog_0_7);
-inline extern Dialog dialog_0_5 = create_npc_dialog("Flashback to a newspaper headline reading \"The Pink Panther Mystery Solved!\"", 1, 14, &dialog_0_6);
-inline extern Dialog dialog_0_4 = create_npc_dialog("In the heart of a bustling city, where shadows conceal untold secrets, resides a detective known by a single name: Conan. Once hailed as a prodigious solver of mysteries, his reputation now hangs by a thread.", 1, 14, &dialog_0_5);
-inline extern Dialog dialog_0_3 = create_npc_dialog("(A dimly lit room with a desk cluttered with case files. Detective Conan, a seasoned investigator, sits with a pensive expression.)", 1, 14, &dialog_0_4);
-
 // Narrator introduction
+inline extern Dialog dialog_0_18 = create_npc_dialog("I hope you mean it, Conan. The department's future rests in your hands. Don't let us down.", 2, 14, &stage_1_root);
+inline extern Dialog dialog_0_17 = create_npc_dialog("You won't be disappointed, Captain. I'll give it my all. This is my shot at redemption, and I won't let it slip away.", 0, 14, &dialog_0_18);
+inline extern Dialog dialog_0_16 = create_npc_dialog("That's the spirit, Conan. Prove to me that you still have that fire. Solve this case, find the truth, and make sure justice is served. We're counting on you.", 2, 14, &dialog_0_17);
+inline extern Dialog dialog_0_15 = create_npc_dialog("Nightingale? The rising star? I won't let him steal my chance at redemption.", 0, 14, &dialog_0_16);
+inline extern Dialog dialog_0_14 = create_npc_dialog("Damn right it would be. We can't afford any slip-ups. Trevor Nightingale is waiting in the wings, ready to take your place if you falter.", 2, 14, &dialog_0_15);
+inline extern Dialog dialog_0_13 = create_npc_dialog("I understand the gravity of the situation, Captain. Losing this opportunity would be disastrous for both of us.", 0, 14, &dialog_0_14);
+inline extern Dialog dialog_0_12 = create_npc_dialog("You've got it. She's surrounded herself with trusted individuals, hidden away in that mansion of hers. We're putting our last hope in you, Conan. Fail, and it's the end of the line.", 2, 14, &dialog_0_13);
+inline extern Dialog dialog_0_11 = create_npc_dialog("Elizabeth Killingsworth, the reclusive magnate? The stakes are high, I see.", 0, 14, &dialog_0_12);
+inline extern Dialog dialog_0_10 = create_npc_dialog("We're in a financial crisis, Conan. The department's on the edge. We need a breakthrough, a high-profile case that will restore our reputation. The investors from Elizabeth Killingsworth's companies specifically requested you.", 2, 14, &dialog_0_11);
+inline extern Dialog dialog_0_9 = create_npc_dialog("I know, Captain. I've hit a rough patch. But what's this all about?", 0, 14, &dialog_0_10);
+inline extern Dialog dialog_0_8 = create_npc_dialog("Exactly. That case put you in the spotlight, but it's been years since then. And lately, you've been struggling to find leads. You need something big to reclaim your former glory.", 2, 14, &dialog_0_9);
+inline extern Dialog dialog_0_7 = create_npc_dialog("Yeah, it feels like a lifetime ago. A queen murdered for a pink diamond, and the culprit running a black market museum.", 0, 14, &dialog_0_8);
+inline extern Dialog dialog_0_6 = create_npc_dialog("You remember the Pink Panther case, don't you? The one that shot you to fame?", 2, 14, &dialog_0_7);
+inline extern Dialog dialog_0_5 = create_npc_dialog("What's on your mind, Captain?", 0, 14, &dialog_0_6);
+inline extern Dialog dialog_0_4 = create_npc_dialog("Take a seat, Conan. We need to have a serious talk.", 2, 14, &dialog_0_5);
+inline extern Dialog dialog_0_3 = create_npc_dialog("Detective Conan entered Captain Clouseau's dimly lit office, the faint glow of a desk lamp casting shadows on the worn-out wooden furniture.", 1, 14, &dialog_0_4);
 inline extern Dialog dialog_0_2 = create_npc_dialog("The game will now begin", 1, 14, &dialog_0_3);
 inline extern Dialog dialog_0_1 = create_npc_dialog("We hope you have read the `How to play` section in the main menu before starting this. Otherwise gameplay elements will seem a bit foreign.", 1, 14, &dialog_0_2);
-inline extern Dialog stage_0_root = create_npc_dialog("Welcome to Deception's Echo: A Detective's Tale", 1, 14, &dialog_0_1);
+inline extern Dialog stage_0_root = create_npc_dialog("Welcome to Mystery Noir: Shadows of Redemption", 1, 14, &dialog_0_1);
 
 #endif // STAGE_0_H
