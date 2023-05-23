@@ -21,12 +21,18 @@ extern Question *stage_1_questions[
 ];
 
 // STAGE 2 QUESTIONS
-extern Question stage_2_questions[];
+extern Question *stage_2_questions[];
 
 // STAGE 3 QUESTIONS
-extern Question stage_3_questions[];
+extern Question *stage_3_questions[];
 
 // STAGE 4 QUESTIONS
-extern Question stage_4_questions[];
+extern Question *stage_4_questions[];
+
+// STAGE 5 QUESTIONS
+extern Question *stage_5_questions[];
+
+// STAGE 6 QUESTIONS
+extern Question *stage_6_questions[];
 
 #endif // QUIZ_H
