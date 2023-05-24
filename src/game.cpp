@@ -11,7 +11,7 @@ Game::Game()
 
     characters[0] = Character("Detective Conan", -1);
     characters[1] = Character("Narrator", -1);
-    characters[2] = Character("Captain Clouseau", 2);
+    characters[2] = Character("Captain Clouseau", 0);
     characters[3] = Character("Heiji", 3);
     characters[4] = Character("Kazuha", 4);
     characters[5] = Character("Mouri", 5);
@@ -23,6 +23,9 @@ Game::Game()
     // initialize the dialog tree
     current = stages[0];
 
+    // initialize the quiz
+    score = 75;
+
     randomize_quiz();
 }
 
@@ -31,25 +34,9 @@ void Game::set_difficulty(int difficulty)
     this->difficulty = difficulty;
 }
 
-void Game::operator++()
-
-{
-    if (stage == Stage::STAGE_5_QUIZ)
-    {
-        current = new Dialog(create_stage_end("You have completed the game!", 1, 0));
-    }
-    else
-    {
-        // increment the stage
-        // stage = (Stage)((int)stage + 1);
-        current_stage++;
-        current = stages[current_stage];
-    }
-}
-
 void Game::randomize_quiz()
 {
-    int quiz_len = 5;
+    int quiz_len = 8;
 
     random_device rd;
     mt19937 rng(rd());
@@ -88,4 +75,49 @@ void Game::randomize_quiz()
 bool Game::is_quiz()
 {
     return stage == STAGE_1_QUIZ || stage == STAGE_2_QUIZ || stage == STAGE_3_QUIZ || stage == STAGE_4_QUIZ || stage == STAGE_5_QUIZ;
+}
+
+void Game::correct_answer()
+{
+
+    if (score == 100)
+    {
+        return;
+    }
+
+    switch (difficulty)
+    {
+    case 0:
+        break;
+    case 1:
+        score += 5;
+        break;
+    case 2:
+        break;
+    default:
+        break;
+    }
+}
+void Game::incorrect_answer()
+{
+    if (score == 0)
+    {
+        return;
+    }
+
+    switch (difficulty)
+    {
+    case 0:
+        break;
+    case 1:
+        score -= 5;
+        break;
+    case 2:
+        score -= 5;
+        break;
+    default:
+        break;
+    }
+
+    score -= 5;
 }

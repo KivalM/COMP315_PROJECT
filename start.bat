@@ -7,7 +7,8 @@ set SOURCE_FILES=%SOURCE_DIR%\main.cpp ^
                 %SOURCE_DIR%\character.cpp %SOURCE_DIR%\character.h ^
                 %SOURCE_DIR%\dialog.cpp %SOURCE_DIR%\dialog.h ^
                 %SOURCE_DIR%\stage_1.h %SOURCE_DIR%\stage_0.h ^
-                %SOURCE_DIR%\quiz.h  %SOURCE_DIR%\quiz.cpp
+                %SOURCE_DIR%\quiz.h  %SOURCE_DIR%\quiz.cpp ^
+                %SOURCE_DIR%\utils.h %SOURCE_DIR%\utils.cpp 
 
 g++ -O3 -s -static-libgcc -static-libstdc++ ^
     %SOURCE_FILES% -std=c++17 -mwindows ^

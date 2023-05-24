@@ -1,9 +1,0 @@
-<questions>
-    <question id="1" type="1" text="Hello, I'm the player.">
-        <answer id="1" text="Hello, I'm the NPC.">
-            <next id="2" />
-        </answer>
-    </question>
-
-
-</questions>
