@@ -6,10 +6,11 @@
 #include "stage_1.h"
 
 // Narrator introduction
-inline extern Dialog dialog_0_18 = create_npc_dialog("I hope you mean it, Conan. The department's future rests in your hands. Don't let us down.", 2, 14, &stage_1_root);
+inline extern Dialog dialog_0_19 = create_stage_end("End of stage 1", 2, 14);
+inline extern Dialog dialog_0_18 = create_npc_dialog("I hope you mean it, Conan. The department's future rests in your hands. Don't let us down.", 2, 14, &dialog_0_19);
 inline extern Dialog dialog_0_17 = create_npc_dialog("You won't be disappointed, Captain. I'll give it my all. This is my shot at redemption, and I won't let it slip away.", 0, 14, &dialog_0_18);
 inline extern Dialog dialog_0_16 = create_npc_dialog("That's the spirit, Conan. Prove to me that you still have that fire. Solve this case, find the truth, and make sure justice is served. We're counting on you.", 2, 14, &dialog_0_17);
-inline extern Dialog dialog_0_15 = create_npc_dialog("Nightingale? The rising star? I won't let him steal my chance at redemption.", 0, 14, &dialog_0_16);
+inline extern Dialog dialog_0_15 = create_npc_dialog("Nightingale? The new guy? I won't let him steal my chance at redemption.", 0, 14, &dialog_0_16);
 inline extern Dialog dialog_0_14 = create_npc_dialog("Damn right it would be. We can't afford any slip-ups. Trevor Nightingale is waiting in the wings, ready to take your place if you falter.", 2, 14, &dialog_0_15);
 inline extern Dialog dialog_0_13 = create_npc_dialog("I understand the gravity of the situation, Captain. Losing this opportunity would be disastrous for both of us.", 0, 14, &dialog_0_14);
 inline extern Dialog dialog_0_12 = create_npc_dialog("You've got it. She's surrounded herself with trusted individuals, hidden away in that mansion of hers. We're putting our last hope in you, Conan. Fail, and it's the end of the line.", 2, 14, &dialog_0_13);
@@ -24,6 +25,6 @@ inline extern Dialog dialog_0_4 = create_npc_dialog("Take a seat, Conan. We need
 inline extern Dialog dialog_0_3 = create_npc_dialog("Detective Conan entered Captain Clouseau's dimly lit office, the faint glow of a desk lamp casting shadows on the worn-out wooden furniture.", 1, 14, &dialog_0_4);
 inline extern Dialog dialog_0_2 = create_npc_dialog("The game will now begin", 1, 14, &dialog_0_3);
 inline extern Dialog dialog_0_1 = create_npc_dialog("We hope you have read the `How to play` section in the main menu before starting this. Otherwise gameplay elements will seem a bit foreign.", 1, 14, &dialog_0_2);
-inline extern Dialog stage_0_root = create_npc_dialog("Welcome to Mystery Noir: Shadows of Redemption", 1, 14, &dialog_0_1);
+inline extern Dialog stage_1_root = create_npc_dialog("Welcome to Mystery Noir: Shadows of Redemption", 1, 14, &dialog_0_1);
 
 #endif // STAGE_0_H

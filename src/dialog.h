@@ -15,9 +15,9 @@ struct Choice
 enum DialogType
 {
     DIALOG,
-    CHOICE,
+    QUESTION,
     STAGE_END,
-    END
+    // END
 };
 
 struct Dialog
@@ -41,18 +41,14 @@ struct Dialog
     Dialog *next = nullptr;
 
     // The options to be made available to the player if this is a choice
-    Choice *option1 = nullptr;
-    Choice *option2 = nullptr;
-    Choice *option3 = nullptr;
-    Choice *option4 = nullptr;
+    string options[4];
+    int correct_option = 0;
 };
 
 Dialog create_npc_dialog(string text, int character, int bg, Dialog *next);
 Dialog create_player_dialog(string text, int character, int bg, Dialog *next);
-Dialog create_dialog_choice(string text, int character, int bg, Choice *option1, Choice *option2, Choice *option3, Choice *option4);
 Dialog create_stage_end(string text, int character, int bg);
-Dialog create_end(string text, int character, int bg);
 
-Choice create_choice(string text, Dialog *next);
+Dialog create_choice_mcq(string text, Dialog *next, string options[4], int correct_option);
 
 #endif // DIALOG_H

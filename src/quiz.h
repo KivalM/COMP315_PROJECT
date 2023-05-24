@@ -16,9 +16,7 @@ struct Question
 Question *create_question(string question, array<string, 4> choices, int answer_index);
 
 // STAGE 1 QUESTIONS
-extern Question *stage_1_questions[
-
-];
+extern Question *stage_1_questions[];
 
 // STAGE 2 QUESTIONS
 extern Question *stage_2_questions[];

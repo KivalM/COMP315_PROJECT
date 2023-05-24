@@ -18,13 +18,28 @@ class GUI
 {
 public:
     GUI();
+    // function to start the GUI
     void start();
-    void hide();
+
+    // function to draw the main menu
     void main_menu();
+
+    // function to draw the how to play screen
     void how_to_play();
+
+    // function to draw the game settings screen
     void game_settings();
+
+    // function to initialize game play systems and start the game
     void start_game();
-    void draw();
+
+    // function to draw the current stage
+    void stage_handler();
+
+    // functions to draw the different stages
+    void draw_question_stage();
+    void draw_answer_stage(int answer);
+    void draw_dialogue_stage();
 
 private:
     std::unique_ptr<webview::webview> w;

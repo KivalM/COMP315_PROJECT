@@ -17,10 +17,15 @@ GUI::GUI()
 
     // create the webview with the main menu
     w = std::make_unique<webview::webview>(false, nullptr);
-    w->set_title("WRATH");
+    w->set_title("Conan's Silent Shadows");
     w->set_size(1280, 720, WEBVIEW_HINT_NONE);
     this->main_menu();
     cout << "Setup the UI!" << endl;
+}
+
+void GUI::start()
+{
+    w->run();
 }
 
 void GUI::main_menu()
@@ -79,15 +84,30 @@ void GUI::game_settings()
 
 void GUI::start_game()
 {
-
     // load the game
     w->set_html(this->html_templates[3]);
 
-    draw();
+    // start the stage handler
+    stage_handler();
 }
 
-void GUI::draw()
+void GUI::stage_handler()
 {
+    cout << "Stage Handler" << endl;
+    if (game->is_quiz())
+    {
+        draw_question_stage();
+    }
+    else
+    {
+        draw_dialogue_stage();
+    }
+}
+
+void GUI::draw_question_stage()
+{
+
+    Dialog *dialog = this->game->current;
     // unbind all the buttons
     w->unbind("next");
     w->unbind("option_1");
@@ -96,18 +116,99 @@ void GUI::draw()
     w->unbind("option_4");
 
     // set the background
-    utils::set_image(w.get(), "background", this->backgrounds[this->game->current->bg]);
+    utils::set_image(w.get(), "background", backgrounds[dialog->bg]);
 
-    if ((this->game->current->char_to_draw != -1))
+    utils::set_hidden(w.get(), "options", false);
+
+    // set the character text
+    cout << "Drawing Question" << endl;
+    cout << "Setting text to: " << dialog->text << endl;
+    utils::set_text(w.get(), "char-text", dialog->text);
+
+    // set callbacks
+    if (dialog->type == DialogType::QUESTION)
     {
-        if (this->game->characters[this->game->current->char_to_draw].image != -1)
+        cout << "Drawing Question" << endl;
+        // onclick we will go to the next dialog
+        utils::set_hidden(w.get(), "options", false);
+
+        // set the options
+        utils::set_text(w.get(), "option_1", dialog->options[0]);
+        utils::set_text(w.get(), "option_2", dialog->options[1]);
+        utils::set_text(w.get(), "option_3", dialog->options[2]);
+        utils::set_text(w.get(), "option_4", dialog->options[3]);
+
+        // bind the options
+        w->bind("option_1", {[this](const string &r) -> string
+                             {draw_answer_stage(0);return ""; }});
+        w->bind("option_2", {[this](const string &r) -> string
+                             {draw_answer_stage(1);;return ""; }});
+        w->bind("option_3", {[this](const string &r) -> string
+                             {draw_answer_stage(2);;return ""; }});
+        w->bind("option_4", {[this](const string &r) -> string
+                             {draw_answer_stage(3);;return ""; }});
+    }
+    else
+    {
+        // pass the context back to the handler
+        utils::set_hidden(w.get(), "options", true);
+        game++;
+        w->bind("next", {[this](const string &r) -> string
+                         {stage_handler();return ""; }});
+    }
+}
+
+void GUI::draw_answer_stage(int answer)
+{
+    Dialog *dialog = this->game->current;
+    // unbind all the buttons
+    w->unbind("next");
+    w->unbind("option_1");
+    w->unbind("option_2");
+    w->unbind("option_3");
+    w->unbind("option_4");
+    if (dialog->correct_option == answer)
+    {
+        utils::set_text(w.get(), "char-text", "Correct!");
+    }
+    else
+    {
+        utils::set_text(w.get(), "char-text", "Incorrect!");
+    }
+
+    // set callbacks
+    w->bind("next", {[this](const string &r) -> string
+
+                     {
+                        game->current = game->current->next;
+                        draw_question_stage();return ""; }});
+}
+
+void GUI::draw_dialogue_stage()
+{
+
+    // unbind all the buttons
+    w->unbind("next");
+    w->unbind("option_1");
+    w->unbind("option_2");
+    w->unbind("option_3");
+    w->unbind("option_4");
+
+    // set the background
+    utils::set_image(w.get(), "background", backgrounds[this->game->current->bg]);
+
+    Dialog *dialog = this->game->current;
+
+    if ((dialog->char_to_draw != -1))
+    {
+        if (this->game->characters[dialog->char_to_draw].image != -1)
         {
             // unhide the character
             utils::set_hidden(w.get(), "char-img", false);
 
             // set the character sprite
-            Character *c = &this->game->characters[this->game->current->char_to_draw];
-            utils::set_image(w.get(), "char-img", this->character_sprites[c->image]);
+            Character *c = &game->characters[dialog->char_to_draw];
+            utils::set_image(w.get(), "char-img", character_sprites[c->image]);
         }
     }
     else
@@ -115,84 +216,37 @@ void GUI::draw()
         utils::set_hidden(w.get(), "char-img", true);
     }
 
-    if (this->game->current->speaking != -1)
+    if (dialog->speaking != -1)
     {
-        Character *c = &this->game->characters[this->game->current->speaking];
+        Character *c = &game->characters[dialog->speaking];
         // set the character name
         utils::set_text(w.get(), "char-name", c->name);
     }
 
     // set the character text
-    cout << "Setting text to: " << this->game->current->text << endl;
-    // sleep for 1 second
-    std::this_thread::sleep_for(std::chrono::milliseconds(150));
-    utils::set_text(w.get(), "char-text", this->game->current->text);
+    cout << "Setting text to: " << dialog->text << endl;
+    utils::set_text(w.get(), "char-text", dialog->text);
 
     // set callbacks
-    if (this->game->current->type == DialogType::DIALOG)
+    if (dialog->type == DialogType::DIALOG)
     {
         cout << "Drawing Dialog" << endl;
-        // if it is not a choice, onclick we will go to the next dialog
+        // onclick we will go to the next dialog
         utils::set_hidden(w.get(), "options", true);
-
-        w->bind("next", {[this](const std::string &r) -> std::string
-                         { cout << "called next"<< endl;this->game->current = this->game->current->next;
-            draw();
-            return ""; }});
-    }
-    else if (this->game->current->type == DialogType::CHOICE)
-    {
-        cout << "Drawing Choice" << endl;
-        utils::set_hidden(w.get(), "options", false);
-
-        // if it is a choice, we ignore the call to next and instead
-
-        utils::set_text(w.get(), "option_1", this->game->current->option1->text);
-
-        // only handle the choice callbacks
-        w->bind("option_1", {[this](const std::string &r) -> std::string
-                             { this->game->current =this->game->current->option1->next;
-                                    draw();
-                                   return ""; }});
-
-        utils::set_text(w.get(), "option_2", this->game->current->option2->text);
-        w->bind("option_2", {[this](const std::string &r) -> std::string
-                             { this->game->current =this->game->current->option2->next;
-            draw();
-            return ""; }});
-
-        utils::set_text(w.get(), "option_3", this->game->current->option3->text);
-        w->bind("option_3", {[this](const std::string &r) -> std::string
-                             { this->game->current =this->game->current->option3->next;
-            draw();
-            return ""; }});
-
-        utils::set_text(w.get(), "option_4", this->game->current->option4->text);
-        w->bind("option_4", {[this](const std::string &r) -> std::string
-                             { this->game->current =this->game->current->option4->next;
-            draw();
-            return ""; }});
+        w->bind("next", {[this](const string &r) -> string
+                         {
+                            cout << "Next" << endl;
+                            game->current = game->current->next;
+                            draw_dialogue_stage();return ""; }});
     }
     else
     {
-        cout << "Drawing End" << endl;
-        utils::set_hidden(w.get(), "options", true);
-        w->bind("next", {[this](const std::string &r) -> std::string
-                         { this->game->current = this->game->current->next;
-            draw();
-            return ""; }});
+        cout << "Stage handler binding" << endl;
+        // pass the context back to the handler
+        game->next_stage();
+        w->bind("next", {[this](const string &r) -> string
+                         {stage_handler();return ""; }});
     }
-}
-
-void GUI::start()
-{
-    w->run();
-}
-
-void GUI::hide()
-{
-    // You can perform any necessary cleanup or additional actions
-    // when hiding the GUI here.
 }
 
 vector<string> utils::load_backgrounds()
