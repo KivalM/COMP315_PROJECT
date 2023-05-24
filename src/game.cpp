@@ -12,11 +12,11 @@ Game::Game()
     characters[0] = Character("Detective Conan", -1);
     characters[1] = Character("Narrator", -1);
     characters[2] = Character("Captain Clouseau", 2);
-    characters[3] = Character("Heiji", 3);
-    characters[4] = Character("Kazuha", 4);
-    characters[5] = Character("Mouri", 5);
-    characters[6] = Character("Ran", 6);
-    characters[7] = Character("Kogoro", 7);
+    characters[3] = Character("Marcus", 3);
+    characters[4] = Character("Thomas", 4);
+    characters[5] = Character("Amelia", 5);
+    characters[6] = Character("Olivia", 6);
+    characters[7] = Character("Vincent", 7);
 
     characters[8] = Character("News Reporter", -1);
 
