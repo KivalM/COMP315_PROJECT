@@ -5,6 +5,8 @@
 #include "dialog.h"
 #include "stage_0.h"
 #include "stage_1.h"
+#include "stage_2.h"
+
 #include "quiz.h"
 
 #include <thread>
@@ -90,7 +92,14 @@ private:
     Dialog quiz_five[8];
 
     // pointers to dialog roots
-    Dialog *stages[2] = {&stage_1_root, quiz_one};
+    Dialog *stages[6] = {
+        &stage_1_root,
+        quiz_one,
+        &stage_2_root,
+        quiz_two,
+        &stage_3_root,
+        quiz_three,
+    };
 
     // the current stage of the above `stages` array
     int current_stage = 0;

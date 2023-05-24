@@ -11,7 +11,7 @@ Game::Game()
 
     characters[0] = Character("Detective Conan", -1);
     characters[1] = Character("Narrator", -1);
-    characters[2] = Character("Captain Clouseau", 2);
+    characters[2] = Character("Captain Clouseau", 0);
     characters[3] = Character("Marcus", 3);
     characters[4] = Character("Thomas", 4);
     characters[5] = Character("Amelia", 5);
@@ -59,17 +59,44 @@ void Game::randomize_quiz()
     // set the last question to point to the stage end
     quiz_one[quiz_len - 1].next = new Dialog(create_stage_end("You have completed the first stage quiz!", 1, 0));
 
-    // int size = 0;
-    // std::shuffle(stage_2_questions, stage_2_questions + size, rng);
+    size = 18;
+    std::shuffle(stage_2_questions, stage_2_questions + size, rng);
+    // fill the question arrays
+    for (int i = 0; i < quiz_len; i++)
+    {
+        Question *q = stage_2_questions[i];
+        string choices[4] = {q->choices[0], q->choices[1], q->choices[2], q->choices[3]};
+        quiz_two[i] = create_choice_mcq(q->question, nullptr, choices, q->answer_index);
+        quiz_two[i].bg = 2;
+    }
+    // now point each question to the next
+    for (int i = 0; i < quiz_len - 1; i++)
+    {
+        quiz_two[i].next = &quiz_two[i + 1];
+    }
 
-    // int size = 0;
-    // std::shuffle(stage_3_questions, stage_3_questions + size, rng);
+    // set the last question to point to the stage end
+    quiz_two[quiz_len - 1].next = new Dialog(create_stage_end("You have completed the second stage quiz!", 2, 0));
 
-    // int size = 17;
-    // std::shuffle(stage_4_questions, stage_4_questions + size, rng);
+    size = 29;
+    std::shuffle(stage_3_questions, stage_3_questions + size, rng);
+    // fill the question arrays
+    for (int i = 0; i < quiz_len; i++)
+    {
+        Question *q = stage_3_questions[i];
+        string choices[4] = {q->choices[0], q->choices[1], q->choices[2], q->choices[3]};
+        quiz_three[i] = create_choice_mcq(q->question, nullptr, choices, q->answer_index);
+        quiz_three[i].bg = 2;
+    }
 
-    // int size = 17;
-    // std::shuffle(stage_5_questions, stage_5_questions + size, rng);
+    // now point each question to the next
+    for (int i = 0; i < quiz_len - 1; i++)
+    {
+        quiz_three[i].next = &quiz_three[i + 1];
+    }
+
+    // set the last question to point to the stage end
+    quiz_three[quiz_len - 1].next = new Dialog(create_stage_end("You have completed the third stage quiz!", 3, 0));
 }
 
 bool Game::is_quiz()
