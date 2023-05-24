@@ -52,6 +52,6 @@ inline extern Dialog dialog_2_4 = create_npc_dialog("(Slightly taken aback) I wa
 inline extern Dialog dialog_2_3 = create_npc_dialog("Merely seeking answers, my good sir, in this web of darkness that has befallen us. Pray tell, where were you when the nefarious act took place?", 0, 14, &dialog_2_4);
 inline extern Dialog dialog_2_2 = create_npc_dialog("(Startled, turning to face Conan) Detective Conan, a stranger in this somber labyrinth. What brings you to my secluded haven?", 3, 14, &dialog_2_3);
 inline extern Dialog dialog_2_1 = create_npc_dialog("Well, well, Marcus Hawthorne, a man of refined taste, surrounded by the enigmatic allure of art. May I disturb your contemplation for a moment?", 0, 14, &dialog_2_2);
-inline extern Dialog stage_2_root = create_npc_dialog("The gloomy library cast long shadows as Detective Conan made his way through the dimly lit room. He approached Marcus Hawthorne, the elusive businessman, who was engrossed in admiring an antique painting.", 1, 14, &dialog_2_1);
+inline extern Dialog stage_3_root = create_npc_dialog("The gloomy library cast long shadows as Detective Conan made his way through the dimly lit room. He approached Marcus Hawthorne, the elusive businessman, who was engrossed in admiring an antique painting.", 1, 14, &dialog_2_1);
 
 #endif // STAGE_2\_H

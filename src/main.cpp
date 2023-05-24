@@ -37,8 +37,8 @@ void RedirectIOToConsole()
 int WINAPI WinMain(HINSTANCE hInt, HINSTANCE hPrevInst, LPSTR lpCmdLine,
                    int nCmdShow)
 {
+  // forward the standard input/output streams to the console
   RedirectIOToConsole();
-
   std::cout << "Starting Silent Shadows..." << std::endl;
 
   // initialize the GUI
@@ -46,5 +46,6 @@ int WINAPI WinMain(HINSTANCE hInt, HINSTANCE hPrevInst, LPSTR lpCmdLine,
 
   // start the GUI
   gui.start();
+
   return 0;
 }

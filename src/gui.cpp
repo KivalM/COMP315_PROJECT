@@ -18,6 +18,8 @@ GUI::GUI()
     w = std::make_unique<webview::webview>(false, nullptr);
     w->set_title("Conan's Silent Shadows");
     w->set_size(1280, 720, WEBVIEW_HINT_NONE);
+    // resizable false
+
     this->main_menu();
     cout << "Setup the UI!" << endl;
 }
@@ -31,7 +33,7 @@ void GUI::main_menu()
 {
     // load the main menu
     w->set_html(this->html_templates[0]);
-    utils::set_image(w.get(), "background", this->backgrounds[11]);
+    utils::set_image(w.get(), "background", this->backgrounds[1]);
 
     // set bindings
     w->bind("start", {[this](const std::string &r) -> std::string
@@ -48,7 +50,7 @@ void GUI::how_to_play()
     // load the how to play menu
 
     w->set_html(this->html_templates[1]);
-    utils::set_image(w.get(), "background", this->backgrounds[10]);
+    utils::set_image(w.get(), "background", this->backgrounds[1]);
 
     // set bindings
     w->bind("back", {[this](const std::string &r) -> std::string
@@ -59,7 +61,7 @@ void GUI::game_settings()
 {
     // load the game settings menu
     w->set_html(this->html_templates[2]);
-    utils::set_image(w.get(), "background", this->backgrounds[10]);
+    utils::set_image(w.get(), "background", this->backgrounds[1]);
 
     // set bindings
     w->bind("back", {[this](const std::string &r) -> std::string
