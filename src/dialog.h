@@ -45,10 +45,10 @@ struct Dialog
     int correct_option = 0;
 };
 
+// Helper functions for creating dialogs
 Dialog create_npc_dialog(string text, int character, int bg, Dialog *next);
 Dialog create_player_dialog(string text, int character, int bg, Dialog *next);
 Dialog create_stage_end(string text, int character, int bg);
-
 Dialog create_choice_mcq(string text, Dialog *next, string options[4], int correct_option);
 
 #endif // DIALOG_H

@@ -6,19 +6,28 @@
 <body onclick="window.next()">
 
     <div id="background">
-        <div id="char-img"></div>
-        <div id="text-background">
-            <div id="char-name">Character name</div>
-            <div id="char-text">THIS IS FROM THE FILE</div>
 
 
-            <div id="options">
-                <div id="option_1" onclick="window.option_1()">ONE</div>
-                <div id="option_2" onclick="window.option_2()">TWO</div>
-                <div id="option_3" onclick="window.option_3()">THREE</div>
-                <div id="option_4" onclick="window.option_4()">FOUR</div>
-            </div>
+        <div id="meter">
+            <div id="meter-text">Agency's Confidence:</div>
+            <div id="meter-fill"></div>
+            <div id="meter-percent">100%</div>
         </div>
+
+    </div>
+    <div id="char-img"></div>
+    <div id="text-background">
+        <div id="char-name">Character name</div>
+        <div id="char-text">THIS IS FROM THE FILE</div>
+
+
+        <div id="options">
+            <div id="option_1" onclick="window.option_1()">ONE</div>
+            <div id="option_2" onclick="window.option_2()">TWO</div>
+            <div id="option_3" onclick="window.option_3()">THREE</div>
+            <div id="option_4" onclick="window.option_4()">FOUR</div>
+        </div>
+    </div>
     </div>
 </body>
 
@@ -47,8 +56,51 @@
         touch-callout: none;
     }
 
+    #meter {
+        background-color: rgba(0, 0, 0, 0.8);
+        height: 5vh;
+        width: 100vw;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+
+
+    }
+
+    #meter-fill {
+        /* if width is less than 100% */
+        background-color: rgba(0, 255, 0, 0.8);
+        height: 100%;
+        width: 100%;
+
+        left: 0;
+        top: 0;
+    }
+
+
+
+    #meter-text {
+        font-family: 'Satisfy', cursive;
+        font-size: 1.5vw;
+        color: white;
+        text-align: center;
+        margin-top: 0;
+        width: 20vw;
+    }
+
+    #meter-percent {
+        font-family: 'Satisfy', cursive;
+        font-size: 1.5vw;
+        color: white;
+        text-align: center;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: 1vw;
+    }
+
     #background {
-        background-image: url("../img/bg/10.png");
+        background-image: url("../img/bg/1.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -70,8 +122,8 @@
         background-size: contain;
         background-position: bottom right;
         position: absolute;
-        height: 80vh;
-        width: 60vh;
+        height: 100vh;
+        width: 90vh;
         bottom: 0;
         right: 0;
     }

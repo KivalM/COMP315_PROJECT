@@ -2,17 +2,9 @@
 #define GUI_H
 
 #include "webview.h"
-#include <memory>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <vector>
-#include <iterator>
-#include <algorithm>
-using namespace std;
-
 #include "game.h"
+#include "utils.h"
+using namespace std;
 
 class GUI
 {
@@ -41,34 +33,22 @@ public:
     void draw_answer_stage(int answer);
     void draw_dialogue_stage();
 
+    // update the meter on the screen
+    void update_meter();
+
 private:
+    // smart pointer to the webview object
     std::unique_ptr<webview::webview> w;
+
+    // vector of strings to hold the base64 encoded images
     vector<string> backgrounds;
     vector<string> character_sprites;
+
+    // vector of strings to hold the html templates
     vector<string> html_templates;
+
+    // pointer to the game object
     Game *game = new Game();
 };
-
-namespace utils
-{
-    std::string load_img_to_base64(const std::string &path);
-    std::string base64_encode(const std::string &input);
-
-    vector<string> load_backgrounds();
-    vector<string> load_character_sprites();
-    vector<string> load_html_templates();
-
-    std::string construct_img_url(const std::string &base64Data);
-    std::string replace_placeholder(std::string text, const std::string &placeholder, const std::string &value);
-
-    // function for manipulating the webview background and character sprites
-    void set_image(webview::webview *w,
-                   const std::string &id, const std::string &base64Data);
-
-    void set_text(webview::webview *w,
-                  const std::string &id, const std::string &text);
-    void set_hidden(webview::webview *w,
-                    const std::string &id, bool hidden);
-}
 
 #endif

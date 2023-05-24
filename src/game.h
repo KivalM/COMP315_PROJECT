@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <random>
 
+// Enum for the current stage of the game
 enum Stage
 {
 
@@ -30,11 +31,13 @@ enum Stage
 class Game
 {
 public:
+    // constructor
     Game();
     ~Game(){};
 
     void set_difficulty(int difficulty);
 
+    // the current dialog node
     Dialog *current;
 
     // holds the player's character
@@ -46,9 +49,19 @@ public:
     // holds the current stage
     Stage stage = STAGE_1;
 
-    void operator++();
-    void randomize_quiz();
-    bool is_quiz();
+    // getters for the game's score
+    int get_score()
+    {
+        return score;
+    }
+
+    // function to be called when the player answers a question incorrectly
+    void incorrect_answer();
+
+    // function to be called when the player answers a question correctly
+    void correct_answer();
+
+    // function to be called to progress to the next stage
     void next_stage()
     {
         stage = (Stage)((int)stage + 1);
@@ -56,19 +69,30 @@ public:
         current = stages[current_stage];
     };
 
+    // pulls the question pool, randomizes the content, and builds a dialog tree
+    void randomize_quiz();
+
+    // is the current stage a quiz?
+    bool is_quiz();
+
 private:
+    // the player's score
+    int score = 75;
+
+    // the games difficulty
     int difficulty = 0;
 
     // pointers to quiz questions
-    Dialog quiz_one[5];
-    Dialog quiz_two[5];
-    Dialog quiz_three[5];
-    Dialog quiz_four[5];
-    Dialog quiz_five[5];
+    Dialog quiz_one[8];
+    Dialog quiz_two[8];
+    Dialog quiz_three[8];
+    Dialog quiz_four[8];
+    Dialog quiz_five[8];
 
     // pointers to dialog roots
     Dialog *stages[2] = {&stage_1_root, quiz_one};
 
+    // the current stage of the above `stages` array
     int current_stage = 0;
 };
 
