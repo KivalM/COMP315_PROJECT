@@ -23,6 +23,7 @@ private:
     bool isVisible; // is it visible in the frontend
 public:
     friend class MemoryGame;
+    Cell(){}; // default constructor
     Cell(int x, int y, T value);
     ~Cell(){};
 };
@@ -66,31 +67,90 @@ public:
     {
 
         // handle click logic
-
+        if(cells[x][y].isFlipped || cells[x][y].isMatched)
+        {
+            return; 
+        }
+        if(first_cell == nullptr)
+        {
+            first_cell = &cells[x][y];
+            first_cell->isFlipped = true;
+            first_cell->isVisible = true;
+        }else if(second_cell == nullptr)
+        {
+            second_cell = &cells[x][y];
+            second_cell->isFlipped = true;
+            second_cell->isVisible = true;
+            //check for match
+            if(chechForMatch())
+            {
+                // if matched, reset the cells
+                first_cell = nullptr;
+                second_cell = nullptr;
+            }
+        }
         // draw all cells
         draw();
+        if(is_finished())
+        {
+            // end the game
+        }
     }
 
+    bool chechForMatch()
+    {
+        if(first_cell->value == second_cell->value)
+        {
+            first_cell->isMatched = true;
+            second_cell->isMatched = true;
+            return true;
+        }else
+        {
+            first_cell->isFlipped = false;
+            second_cell->isFlipped = false;
+            return false;
+        }
+    }
     bool is_finished()
     {
-        // check if all cells are matched
-        return false;
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; i < 4; i++)
+            {
+                if (!cells[i][j].isMatched)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 };
-
-MemoryGame::MemoryGame(
-    webview::webview *w,
-    string images[])
+template <typename T>
+Cell<T>::Cell(int x, int y, T value)
 {
-
+    this->value = value;
+    this->isFlipped = false;
+    this->isMatched = false;
+    this->isVisible = false;
+}
+MemoryGame::MemoryGame(webview::webview *w,string images[])
+{
+    
+    this->ui_context = w;
     // initialize the cells
-
-    for (int i = 0; i < 4; i++)
+    for(int i = 0;i < 9; i++)
     {
-        for (int j = 0; i < 4; i++)
+        this->images[i] = images[i];
+    }
+    int value = 1;
+    for(int i = 0;i < 4; i++)
+    {
+        for(int j = 0;j < 4; j++)
         {
-            // cells[i][j] = nullptr;
-            utils::set_image(ui_context, "00", images[5]);
+            cells[i][j] = Cell<int>(i, j, value);
+            value = (value % 8) + 1;
+            utils::set_image(ui_context, to_string(i) + to_string(j), images[0]);
         }
     }
 }
