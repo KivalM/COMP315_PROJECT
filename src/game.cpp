@@ -17,7 +17,6 @@ Game::Game()
     characters[5] = Character("Amelia", 3);
     characters[6] = Character("Olivia", 4);
     characters[7] = Character("Vincent", 5);
-
     characters[8] = Character("News Reporter", -1);
 
     // initialize the dialog tree
@@ -145,6 +144,4 @@ void Game::incorrect_answer()
     default:
         break;
     }
-
-    score -= 5;
 }
