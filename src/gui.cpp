@@ -104,6 +104,9 @@ void GUI::stage_handler()
     {
         draw_dialogue_stage();
     }
+
+    // update the stage number
+    utils::set_text<int>(w.get(), "act-num", game->current_act());
 }
 
 void GUI::draw_question_stage()
@@ -290,21 +293,4 @@ void GUI::update_meter()
     // update the meter
     utils::set_text(w.get(), "meter-percent", to_string(game->get_score()) + " %");
     utils::set_width(w.get(), "meter-fill", game->get_score());
-
-    if (game->get_score() > 75)
-    {
-        utils::set_color(w.get(), "meter-fill", 0, 255, 0, 1);
-    }
-    else if (game->get_score() > 50)
-    {
-        utils::set_color(w.get(), "meter-fill", 255, 255, 0, 1);
-    }
-    else if (game->get_score() > 25)
-    {
-        utils::set_color(w.get(), "meter-fill", 255, 165, 0, 1);
-    }
-    else
-    {
-        utils::set_color(w.get(), "meter-fill", 255, 0, 0, 1);
-    }
 }

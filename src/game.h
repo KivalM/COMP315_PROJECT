@@ -6,6 +6,7 @@
 #include "stage_0.h"
 #include "stage_1.h"
 #include "stage_2.h"
+#include "stage_3.h"
 
 #include "quiz.h"
 
@@ -77,6 +78,11 @@ public:
     // is the current stage a quiz?
     bool is_quiz();
 
+    int current_act()
+    {
+        return current_stage / 2;
+    }
+
 private:
     // the player's score
     int score = 75;
@@ -92,13 +98,15 @@ private:
     Dialog quiz_five[8];
 
     // pointers to dialog roots
-    Dialog *stages[6] = {
+    Dialog *stages[8] = {
         &stage_1_root,
         quiz_one,
         &stage_2_root,
         quiz_two,
         &stage_3_root,
         quiz_three,
+        &stage_4_root,
+        quiz_four,
     };
 
     // the current stage of the above `stages` array
