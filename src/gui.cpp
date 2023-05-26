@@ -16,7 +16,7 @@ GUI::GUI()
 
     // create the webview with the main menu
     w = std::make_unique<webview::webview>(false, nullptr);
-    w->set_title("Conan's Silent Shadows");
+    w->set_title("Shadows of Redemption");
     w->set_size(1280, 720, WEBVIEW_HINT_NONE);
     // resizable false
 
