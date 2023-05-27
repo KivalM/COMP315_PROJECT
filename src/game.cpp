@@ -134,18 +134,13 @@ void Game::correct_answer()
 {
 
     if (score == 100)
-    {
         return;
-    }
 
+    // we will only increase the score if the difficulty is standard
     switch (difficulty)
     {
-    case 0:
-        break;
     case 1:
         score += 5;
-        break;
-    case 2:
         break;
     default:
         break;
@@ -153,15 +148,10 @@ void Game::correct_answer()
 }
 void Game::incorrect_answer()
 {
-    if (score == 0)
-    {
-        return;
-    }
 
+    // we will only decrease the score if the difficulty is standard or hard
     switch (difficulty)
     {
-    case 0:
-        break;
     case 1:
         score -= 5;
         break;
@@ -170,5 +160,13 @@ void Game::incorrect_answer()
         break;
     default:
         break;
+    }
+
+    if (score == 0)
+    {
+        stage = STAGE_FAIL;
+        current = &stage_fail_root;
+        current_stage = 12;
+        return;
     }
 }

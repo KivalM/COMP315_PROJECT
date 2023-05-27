@@ -8,6 +8,7 @@
 #include "stage_2.h"
 #include "stage_3.h"
 #include "stage_4.h"
+#include "stage_fail.h"
 
 #include "quiz.h"
 
@@ -31,7 +32,9 @@ enum Stage
     MATCHING,
     STAGE_5,
     GOODBYE,
-    END
+    END,
+    STAGE_FAIL,
+    STAGE_FAIL_END,
 
 };
 
@@ -68,6 +71,7 @@ public:
     // function to be called to progress to the next stage
     void next_stage()
     {
+
         stage = (Stage)((int)stage + 1);
         current_stage++;
         current = stages[current_stage];
@@ -125,7 +129,7 @@ private:
     // the player's score
     int score = 75;
 
-    // the games difficulty
+    // the game's difficulty
     int difficulty = 0;
 
     // pointers to quiz questions
@@ -133,10 +137,9 @@ private:
     Dialog quiz_two[8];
     Dialog quiz_three[8];
     Dialog quiz_four[8];
-    Dialog quiz_five[8];
 
     // pointers to dialog roots
-    Dialog *stages[11] = {
+    Dialog *stages[14] = {
         &stage_1_root,
         quiz_one,
         &stage_2_root,
@@ -148,7 +151,9 @@ private:
         new Dialog(create_stage_end("You have completed the matching game", 4, 0)),
         &stage_5_root,
         new Dialog(create_end_dialog("You have completed the game", 5, 0)),
-    };
+        new Dialog(create_end_dialog("You have completed the game", 5, 0)),
+        &stage_fail_root,
+        new Dialog(create_end_dialog("You have failed the game", 5, 0))};
 
     // the current stage of the above `stages` array
     int current_stage = 0;
