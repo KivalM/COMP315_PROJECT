@@ -17,8 +17,8 @@ inline extern Dialog dialog_fail_6 = create_npc_dialog("I know your passion, Con
 inline extern Dialog dialog_fail_5 = create_npc_dialog("Taken off the case? But Captain, this investigation is my life. I won't let it end like this. There's more to uncover, I can feel it.", 0, 0, &dialog_fail_6);
 inline extern Dialog dialog_fail_4 = create_npc_dialog("Conan's face grew dark, his eyes clouded with a mixture of frustration and disbelief.", 1, 0, &dialog_fail_5);
 inline extern Dialog dialog_fail_3 = create_npc_dialog("I understand your dedication, Conan, but the higher-ups have made their decision. You're being taken off the case.", 2, 0, &dialog_fail_4);
-inline extern Dialog dialog_fail_2 = create_npc_dialog("Captain, I assure you, I've been relentless in my pursuit of the truth. I may have hit a roadblock, but I am close to uncovering the real culprit.", 0, 14, &dialog_fail_3);
-inline extern Dialog dialog_fail_1 = create_npc_dialog("Conan, we need to talk. The brass has lost confidence in your abilities. Your track record, once shining bright, has dimmed with this latest case.", 2, 14, &dialog_fail_2);
-inline extern Dialog stage_fail_root = create_npc_dialog("Detective Conan sat in a dimly lit room, the weight of failure heavy on his shoulders. Captain Clouseau entered, his presence exuding an air of disappointment and frustration. The room was filled with the smoke of disappointment, swirling in the shadows.", 1, 14, &dialog_fail_1);
+inline extern Dialog dialog_fail_2 = create_npc_dialog("Captain, I assure you, I've been relentless in my pursuit of the truth. I may have hit a roadblock, but I am close to uncovering the real culprit.", 0, 0, &dialog_fail_3);
+inline extern Dialog dialog_fail_1 = create_npc_dialog("Conan, we need to talk. The brass has lost confidence in your abilities. Your track record, once shining bright, has dimmed with this latest case.", 2, 0, &dialog_fail_2);
+inline extern Dialog stage_fail_root = create_npc_dialog("Detective Conan sat in a dimly lit room, the weight of failure heavy on his shoulders. Captain Clouseau entered, his presence exuding an air of disappointment and frustration. The room was filled with the smoke of disappointment, swirling in the shadows.", 1, 0, &dialog_fail_1);
 
 #endif // STAGE_FAIL_H
