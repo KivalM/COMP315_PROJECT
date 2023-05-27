@@ -237,13 +237,12 @@ void GUI::draw_answer_stage(int answer)
     if (dialog->correct_option == answer)
     {
         utils::set_text(w.get(), "char-text", "Correct!");
-        // increment inner to game pointer
-        game->correct_answer();
+        ++(*game);
     }
     else
     {
         utils::set_text(w.get(), "char-text", "Incorrect!");
-        game->incorrect_answer();
+        --(*game);
     }
 
     update_meter();

@@ -56,26 +56,18 @@ public:
     // holds the current stage
     Stage stage = STAGE_1;
 
+    // overload ++ and -- to call correct_answer() and incorrect_answer() on a player'
+    void operator++();
+    void operator--();
+
     // getters for the game's score
     int get_score()
     {
         return score;
     }
 
-    // function to be called when the player answers a question incorrectly
-    void incorrect_answer();
-
-    // function to be called when the player answers a question correctly
-    void correct_answer();
-
     // function to be called to progress to the next stage
-    void next_stage()
-    {
-
-        stage = (Stage)((int)stage + 1);
-        current_stage++;
-        current = stages[current_stage];
-    };
+    void next_stage();
 
     // pulls the question pool, randomizes the content, and builds a dialog tree
     void randomize_quiz();
@@ -85,45 +77,7 @@ public:
     bool is_memory();
 
     int
-    current_act()
-    {
-        if (stage == STAGE_1 || stage == STAGE_1_QUIZ)
-        {
-            return 1;
-        }
-        else if (stage == STAGE_2 || stage == STAGE_2_QUIZ)
-        {
-            return 2;
-        }
-        else if (stage == STAGE_3 || stage == STAGE_3_QUIZ)
-        {
-            return 3;
-        }
-        else if (stage == STAGE_4 || stage == STAGE_4_QUIZ)
-        {
-            return 4;
-        }
-        else if (stage == MATCHING)
-        {
-            return 5;
-        }
-        else if (stage == STAGE_5)
-        {
-            return 6;
-        }
-        else if (stage == GOODBYE)
-        {
-            return 6;
-        }
-        else if (stage == END)
-        {
-            return 6;
-        }
-        else
-        {
-            return 0;
-        }
-    }
+    current_act();
 
 private:
     // the player's score
@@ -131,6 +85,12 @@ private:
 
     // the game's difficulty
     int difficulty = 0;
+
+    // function to be called when the player answers a question incorrectly
+    void incorrect_answer();
+
+    // function to be called when the player answers a question correctly
+    void correct_answer();
 
     // pointers to quiz questions
     Dialog quiz_one[8];

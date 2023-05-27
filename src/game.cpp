@@ -130,6 +130,17 @@ bool Game::is_memory()
     return stage == MATCHING;
 }
 
+// overload ++ and -- to call correct_answer() and incorrect_answer()
+void Game::operator++()
+{
+    correct_answer();
+}
+
+void Game::operator--()
+{
+    incorrect_answer();
+}
+
 void Game::correct_answer()
 {
 
@@ -170,3 +181,51 @@ void Game::incorrect_answer()
         return;
     }
 }
+
+int Game::current_act()
+{
+    if (stage == STAGE_1 || stage == STAGE_1_QUIZ)
+    {
+        return 1;
+    }
+    else if (stage == STAGE_2 || stage == STAGE_2_QUIZ)
+    {
+        return 2;
+    }
+    else if (stage == STAGE_3 || stage == STAGE_3_QUIZ)
+    {
+        return 3;
+    }
+    else if (stage == STAGE_4 || stage == STAGE_4_QUIZ)
+    {
+        return 4;
+    }
+    else if (stage == MATCHING)
+    {
+        return 5;
+    }
+    else if (stage == STAGE_5)
+    {
+        return 6;
+    }
+    else if (stage == GOODBYE)
+    {
+        return 6;
+    }
+    else if (stage == END)
+    {
+        return 6;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+void Game::next_stage()
+{
+
+    stage = (Stage)((int)stage + 1);
+    current_stage++;
+    current = stages[current_stage];
+};
