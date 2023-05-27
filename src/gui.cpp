@@ -274,13 +274,13 @@ void GUI::draw_dialogue_stage()
     // set the character text
     cout << "Setting text to: " << dialog->text << endl;
     utils::set_text(w.get(), "char-text", dialog->text);
+    utils::set_hidden(w.get(), "options", true);
 
     // set callbacks
     if (dialog->type == DialogType::DIALOG)
     {
         cout << "Drawing Dialog" << endl;
         // onclick we will go to the next dialog
-        utils::set_hidden(w.get(), "options", true);
         w->bind("next", {[this](const string &r) -> string
                          {
                             cout << "Next" << endl;
@@ -313,7 +313,7 @@ void GUI::draw_memory_stage()
     w->set_html(html_templates[4]);
 
     // set the background
-    utils::set_image(w.get(), "background", backgrounds[0]);
+    utils::set_image(w.get(), "grid", backgrounds[0]);
 
     // sets the callbacks
     w->bind("callback", {[this](const string &r) -> string
@@ -357,6 +357,8 @@ Cell<T>::Cell(int x, int y, T value)
     this->value = value;
     this->isFlipped = false;
     this->isMatched = false;
+    this->x = x;
+    this->y = y;
 }
 
 MemoryGame::MemoryGame(webview::webview *w, std::vector<std::string> images)
@@ -452,15 +454,16 @@ void MemoryGame::click(int x, int y)
         }
         else
         {
-            first_cell->isFlipped = false;
-            second_cell->isFlipped = false;
+            // cells don't match
+            flip_cell(first_cell->x, first_cell->y, false);
+            flip_cell(second_cell->x, second_cell->y, false);
 
             first_cell = nullptr;
             second_cell = nullptr;
 
             cout << "Cells don't match" << endl;
         }
-        draw();
+
         return;
     }
 
@@ -479,20 +482,17 @@ void MemoryGame::click(int x, int y)
     {
         // flip the cell
         first_cell = &cells[x][y];
-        first_cell->isFlipped = true;
+        flip_cell(x, y, true);
 
         cout << "First cell flipped" << endl;
     }
     else if (second_cell == nullptr)
     {
         second_cell = &cells[x][y];
-        second_cell->isFlipped = true;
+        flip_cell(x, y, true);
 
         cout << "Second cell flipped" << endl;
     }
-
-    // draw all cells
-    draw();
 }
 
 void MemoryGame::draw()
@@ -520,5 +520,20 @@ void MemoryGame::draw()
                 }
             }
         }
+    }
+}
+
+void MemoryGame::flip_cell(int x, int y, bool isFlipped)
+{
+    cells[x][y].isFlipped = isFlipped;
+    // set the image
+    string id = to_string(x) + to_string(y);
+    if (isFlipped)
+    {
+        utils::set_image(ui_context, id, images[cells[x][y].value]);
+    }
+    else
+    {
+        utils::set_image(ui_context, id, images[0]);
     }
 }

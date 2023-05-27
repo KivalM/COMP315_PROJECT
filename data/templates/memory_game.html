@@ -3,24 +3,11 @@
 
 <head>
     <title>Image Grid</title>
-    <style>
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 10px;
-        }
 
-        .grid-item {
-            width: 200px;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="grid" onclick="window.callback()">
+    <div class="grid" id="grid" onclick="window.callback()">
         <!-- Generating a 4x4 grid of images -->
         <div id="00" class="grid-item" onclick="event.stopPropagation(); window.callback_00()"></div>
         <div id="01" class="grid-item" onclick="event.stopPropagation(); window.callback_01()"></div>
@@ -41,5 +28,45 @@
     </div>
 
 </body>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #000000;
+    }
+
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 1vw;
+        grid-auto-rows: auto;
+        height: 100vh;
+        width: 100vw;
+        padding: 1vw;
+        background-image: url("../img/bg/1.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-sizing: border-box;
+    }
+
+
+    .grid-item {
+
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+    }
+
+    .grid-item:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+        /* make it lighter */
+        filter: brightness(1.1);
+    }
+</style>
 
 </html>

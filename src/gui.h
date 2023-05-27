@@ -66,6 +66,7 @@ private:
     T value;
     bool isFlipped; // whether to display it as flipped or not
     bool isMatched; // whether it has been matched or not
+    int x, y;       // position on the board
 
 public:
     friend class MemoryGame;
@@ -91,6 +92,7 @@ private:
     webview::webview *ui_context = nullptr;
 
     void draw();
+    void flip_cell(int x, int y, bool isFlipped);
 
 public:
     MemoryGame(webview::webview *w, std::vector<std::string> images);
