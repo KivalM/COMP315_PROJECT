@@ -3,7 +3,6 @@
 
 #include <string>
 #include "dialog.h"
-#include "stage_1.h"
 
 // Narrator introduction
 inline extern Dialog dialog_2_44 = create_stage_end("Their conversation ended, both Detective Conan and Thomas Reynolds understood the weight of their task. The path to uncovering the truth would be treacherous, but they were determined to bring justice to the shadows that surrounded them.", 1, 14);

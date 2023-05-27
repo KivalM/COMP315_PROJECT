@@ -2,7 +2,6 @@
 #define STAGE_1_H
 #include <string>
 #include "dialog.h"
-#include "stage_2.h"
 
 inline extern Dialog dialog_1_15 = create_stage_end("This is end of stage 2.", 1, 14);
 inline extern Dialog dialog_1_14 = create_npc_dialog("In this perilous stage, Detective Conan had uncovered vital clues. The blood-soaked cheque, Marcus's pen, the missing weapon, the redhead hair strand, and the meticulous timing all formed pieces of a dark puzzle. With each deduction, he moved closer to unraveling the truth behind Elizabeth Killingsworth's murder.", 1, 2, &dialog_1_15);

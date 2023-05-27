@@ -17,7 +17,7 @@ enum DialogType
     DIALOG,
     QUESTION,
     STAGE_END,
-    // END
+    GAME_END
 };
 
 struct Dialog
@@ -50,5 +50,6 @@ Dialog create_npc_dialog(string text, int character, int bg, Dialog *next);
 Dialog create_player_dialog(string text, int character, int bg, Dialog *next);
 Dialog create_stage_end(string text, int character, int bg);
 Dialog create_choice_mcq(string text, Dialog *next, string options[4], int correct_option);
+Dialog create_end_dialog(string text, int character, int bg);
 
 #endif // DIALOG_H
