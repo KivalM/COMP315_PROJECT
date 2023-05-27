@@ -7,6 +7,7 @@
 #include "stage_1.h"
 #include "stage_2.h"
 #include "stage_3.h"
+#include "stage_4.h"
 
 #include "quiz.h"
 
@@ -29,7 +30,8 @@ enum Stage
     STAGE_4_QUIZ,
     MATCHING,
     STAGE_5,
-    GAME_END
+    GOODBYE,
+    END
 
 };
 
@@ -38,15 +40,12 @@ class Game
 public:
     // constructor
     Game();
-    ~Game(){};
+    ~Game();
 
     void set_difficulty(int difficulty);
 
     // the current dialog node
     Dialog *current;
-
-    // holds the player's character
-    Character *player;
 
     // holds a list of all the characters in the game
     Character *characters;
@@ -84,7 +83,42 @@ public:
     int
     current_act()
     {
-        return current_stage / 2;
+        if (stage == STAGE_1 || stage == STAGE_1_QUIZ)
+        {
+            return 1;
+        }
+        else if (stage == STAGE_2 || stage == STAGE_2_QUIZ)
+        {
+            return 2;
+        }
+        else if (stage == STAGE_3 || stage == STAGE_3_QUIZ)
+        {
+            return 3;
+        }
+        else if (stage == STAGE_4 || stage == STAGE_4_QUIZ)
+        {
+            return 4;
+        }
+        else if (stage == MATCHING)
+        {
+            return 5;
+        }
+        else if (stage == STAGE_5)
+        {
+            return 6;
+        }
+        else if (stage == GOODBYE)
+        {
+            return 6;
+        }
+        else if (stage == END)
+        {
+            return 6;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
 private:
@@ -102,7 +136,7 @@ private:
     Dialog quiz_five[8];
 
     // pointers to dialog roots
-    Dialog *stages[9] = {
+    Dialog *stages[11] = {
         &stage_1_root,
         quiz_one,
         &stage_2_root,
@@ -111,8 +145,9 @@ private:
         quiz_three,
         &stage_4_root,
         quiz_four,
-        new Dialog(create_stage_end("You have completed the fourth stage!", 4, 0))
-        // &stage_5_root,
+        new Dialog(create_stage_end("You have completed the matching game", 4, 0)),
+        &stage_5_root,
+        new Dialog(create_end_dialog("You have completed the game", 5, 0)),
     };
 
     // the current stage of the above `stages` array

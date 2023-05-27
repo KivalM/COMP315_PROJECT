@@ -62,8 +62,16 @@ void GUI::how_to_play()
 
 void GUI::game_settings()
 {
+    // clear any data at old game pointer
+    delete this->game;
+    this->game = nullptr;
+
+    // create a new game object
+    game = new Game();
+
     // load the game settings menu
     w->set_html(this->html_templates[2]);
+
     utils::set_image(w.get(), "background", this->backgrounds[1]);
 
     // set bindings
@@ -98,6 +106,12 @@ void GUI::start_game()
 
 void GUI::stage_handler()
 {
+
+    if (game->stage == Stage::END)
+    {
+        main_menu();
+        return;
+    }
 
     if (game->stage == Stage::MATCHING)
     {
@@ -393,13 +407,20 @@ MemoryGame::MemoryGame(webview::webview *w, std::vector<std::string> images)
 
 MemoryGame::~MemoryGame()
 {
+    cout << "Memory Game destructor called" << endl;
+
+    // delete all the cells
+    for (int i = 0; i < 4; i++)
+    {
+        delete[] cells[i];
+    }
 }
 
 bool MemoryGame::is_finished()
 {
     for (int i = 0; i < 4; i++)
     {
-        for (int j = 0; i < 4; i++)
+        for (int j = 0; j < 4; j++)
         {
             if (!cells[i][j].isMatched)
             {

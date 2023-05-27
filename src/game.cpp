@@ -25,6 +25,11 @@ Game::Game()
     randomize_quiz();
 }
 
+Game::~Game()
+{
+    delete[] characters;
+}
+
 void Game::set_difficulty(int difficulty)
 {
     this->difficulty = difficulty;
