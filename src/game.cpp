@@ -87,7 +87,7 @@ void Game::randomize_quiz()
         Question *q = stage_3_questions[i];
         string choices[4] = {q->choices[0], q->choices[1], q->choices[2], q->choices[3]};
         quiz_three[i] = create_choice_mcq(q->question, nullptr, choices, q->answer_index);
-        quiz_three[i].bg = 2;
+        quiz_three[i].bg = 3;
     }
 
     // now point each question to the next
@@ -107,7 +107,7 @@ void Game::randomize_quiz()
         Question *q = stage_4_questions[i];
         string choices[4] = {q->choices[0], q->choices[1], q->choices[2], q->choices[3]};
         quiz_four[i] = create_choice_mcq(q->question, nullptr, choices, q->answer_index);
-        quiz_four[i].bg = 2;
+        quiz_four[i].bg = 3;
     }
 
     // now point each question to the next
