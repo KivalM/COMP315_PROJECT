@@ -5,7 +5,7 @@ vector<string> utils::load_backgrounds()
     string img_dir = "data\\img\\bg\\";
     vector<string> backgrounds;
 
-    for (int i = 1; i <= 15; i++)
+    for (int i = 1; i <= 5; i++)
     {
         string img_path = img_dir + to_string(i) + ".png";
         string base64_encoded = utils::load_img_to_base64(img_path);

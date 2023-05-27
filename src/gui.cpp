@@ -36,6 +36,10 @@ void GUI::main_menu()
 {
     // load the main menu
     w->set_html(this->html_templates[0]);
+
+    // slight delay to allow the webview to load the html
+    Sleep(100);
+
     utils::set_image(w.get(), "background", this->backgrounds[1]);
 
     // set bindings
@@ -107,7 +111,7 @@ void GUI::start_game()
 void GUI::stage_handler()
 {
 
-    if (game->stage == Stage::END)
+    if (game->stage == Stage::END || game->stage == Stage::STAGE_FAIL_END)
     {
         main_menu();
         return;
@@ -209,7 +213,12 @@ void GUI::draw_question_stage()
     {
         // pass the context back to the handler
         utils::set_hidden(w.get(), "options", true);
-        game->next_stage();
+
+        if (game->stage != Stage::STAGE_FAIL)
+        {
+            game->next_stage();
+        }
+
         w->bind("next", {[this](const string &r) -> string
                          {stage_handler();return ""; }});
     }
@@ -228,22 +237,35 @@ void GUI::draw_answer_stage(int answer)
     if (dialog->correct_option == answer)
     {
         utils::set_text(w.get(), "char-text", "Correct!");
-        // increment inner to game pointer
-        game->correct_answer();
+        ++(*game);
     }
     else
     {
         utils::set_text(w.get(), "char-text", "Incorrect!");
-        game->incorrect_answer();
+        --(*game);
     }
 
     update_meter();
 
     // set callbacks
-    w->bind("next", {[this](const string &r) -> string
-                     {
+    if (game->stage == Stage::STAGE_FAIL)
+    {
+        // hide all the buttons
+        utils::set_hidden(w.get(), "option_1", true);
+        utils::set_hidden(w.get(), "option_2", true);
+        utils::set_hidden(w.get(), "option_3", true);
+        utils::set_hidden(w.get(), "option_4", true);
+
+        w->bind("next", {[this](const string &r) -> string
+                         {stage_handler();return ""; }});
+    }
+    else
+    {
+        w->bind("next", {[this](const string &r) -> string
+                         {
                         game->current = game->current->next;
                         draw_question_stage();return ""; }});
+    }
 }
 
 void GUI::draw_dialogue_stage()

@@ -21,5 +21,4 @@ inline extern Dialog dialog_fail_2 = create_npc_dialog("Captain, I assure you, I
 inline extern Dialog dialog_fail_1 = create_npc_dialog("Conan, we need to talk. The brass has lost confidence in your abilities. Your track record, once shining bright, has dimmed with this latest case.", 2, 0, &dialog_fail_2);
 inline extern Dialog stage_fail_root = create_npc_dialog("Detective Conan sat in a dimly lit room, the weight of failure heavy on his shoulders. Captain Clouseau entered, his presence exuding an air of disappointment and frustration. The room was filled with the smoke of disappointment, swirling in the shadows.", 1, 0, &dialog_fail_1);
 
-
-#endif // STAGE_4_H
+#endif // STAGE_FAIL_H
