@@ -3,7 +3,6 @@
 
 #include <string>
 #include "dialog.h"
-#include "stage_1.h"
 
 // Narrator introduction
 inline extern Dialog dialog_0_19 = create_stage_end("End of stage 1", 2, 14);

@@ -20,25 +20,26 @@
 </head>
 
 <body>
-    <div class="grid">
+    <div class="grid" onclick="window.callback()">
         <!-- Generating a 4x4 grid of images -->
-        <div id="00" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="01" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="02" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="03" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="10" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="11" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="12" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="13" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="20" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="21" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="22" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="23" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="30" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="31" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="32" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
-        <div id="33" class="grid-item" style="background-image: url('https://picsum.photos/200');"></div>
+        <div id="00" class="grid-item" onclick="event.stopPropagation(); window.callback_00()"></div>
+        <div id="01" class="grid-item" onclick="event.stopPropagation(); window.callback_01()"></div>
+        <div id="02" class="grid-item" onclick="event.stopPropagation(); window.callback_02()"></div>
+        <div id="03" class="grid-item" onclick="event.stopPropagation(); window.callback_03()"></div>
+        <div id="10" class="grid-item" onclick="event.stopPropagation(); window.callback_10()"></div>
+        <div id="11" class="grid-item" onclick="event.stopPropagation(); window.callback_11()"></div>
+        <div id="12" class="grid-item" onclick="event.stopPropagation(); window.callback_12()"></div>
+        <div id="13" class="grid-item" onclick="event.stopPropagation(); window.callback_13()"></div>
+        <div id="20" class="grid-item" onclick="event.stopPropagation(); window.callback_20()"></div>
+        <div id="21" class="grid-item" onclick="event.stopPropagation(); window.callback_21()"></div>
+        <div id="22" class="grid-item" onclick="event.stopPropagation(); window.callback_22()"></div>
+        <div id="23" class="grid-item" onclick="event.stopPropagation(); window.callback_23()"></div>
+        <div id="30" class="grid-item" onclick="event.stopPropagation(); window.callback_30()"></div>
+        <div id="31" class="grid-item" onclick="event.stopPropagation(); window.callback_31()"></div>
+        <div id="32" class="grid-item" onclick="event.stopPropagation(); window.callback_32()"></div>
+        <div id="33" class="grid-item" onclick="event.stopPropagation(); window.callback_33()"></div>
     </div>
+
 </body>
 
 </html>

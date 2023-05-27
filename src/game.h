@@ -27,7 +27,9 @@ enum Stage
     STAGE_3_QUIZ,
     STAGE_4,
     STAGE_4_QUIZ,
-    STAGE_5_QUIZ,
+    MATCHING,
+    STAGE_5,
+    GAME_END
 
 };
 
@@ -77,8 +79,10 @@ public:
 
     // is the current stage a quiz?
     bool is_quiz();
+    bool is_memory();
 
-    int current_act()
+    int
+    current_act()
     {
         return current_stage / 2;
     }
@@ -98,7 +102,7 @@ private:
     Dialog quiz_five[8];
 
     // pointers to dialog roots
-    Dialog *stages[8] = {
+    Dialog *stages[9] = {
         &stage_1_root,
         quiz_one,
         &stage_2_root,
@@ -107,6 +111,8 @@ private:
         quiz_three,
         &stage_4_root,
         quiz_four,
+        new Dialog(create_stage_end("You have completed the fourth stage!", 4, 0))
+        // &stage_5_root,
     };
 
     // the current stage of the above `stages` array

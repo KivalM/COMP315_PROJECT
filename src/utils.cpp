@@ -30,6 +30,21 @@ vector<string> utils::load_character_sprites()
     return backgrounds;
 }
 
+vector<string> utils::load_matching_game()
+{
+    string img_dir = "data\\img\\matching\\";
+    vector<string> matching_game;
+
+    for (int i = 1; i <= 9; i++)
+    {
+        string img_path = img_dir + to_string(i) + ".png";
+        string base64_encoded = utils::load_img_to_base64(img_path);
+        matching_game.push_back(base64_encoded);
+    }
+
+    return matching_game;
+}
+
 vector<string> utils::load_html_templates()
 {
     string img_dir = "data\\templates\\";
@@ -98,6 +113,22 @@ vector<string> utils::load_html_templates()
 
     const std::string &game_template = game_oss.str();
     html_templates.push_back(game_template);
+
+    // load memory game template
+    string memory_game_path = img_dir + "memory_game.html";
+    std::ifstream memory_game_file(memory_game_path);
+
+    if (!memory_game_file)
+    {
+        std::cerr << "Failed to open the memory game template file: " << memory_game_path << std::endl;
+        return html_templates;
+    }
+
+    std::ostringstream memory_game_oss;
+    std::copy(std::istreambuf_iterator<char>(memory_game_file), {}, std::ostreambuf_iterator<char>(memory_game_oss));
+
+    const std::string &memory_game_template = memory_game_oss.str();
+    html_templates.push_back(memory_game_template);
 
     return html_templates;
 }

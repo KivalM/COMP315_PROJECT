@@ -3,7 +3,6 @@
 
 #include <string>
 #include "dialog.h"
-#include "stage_2.h"
 
 // Narrator introduction
 

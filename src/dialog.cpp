@@ -46,3 +46,13 @@ Dialog create_stage_end(string text, int character, int bg)
     d.type = STAGE_END;
     return d;
 }
+
+// Dialog create_end_dialog(string text, int character, int bg)
+// {
+//     Dialog d;
+//     d.text = text;
+//     d.char_to_draw = character;
+//     d.bg = bg;
+//     d.type = END;
+//     return d;
+// }
