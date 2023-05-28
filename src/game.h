@@ -43,8 +43,10 @@ class Game
 public:
     // constructor
     Game();
+    // destructor
     ~Game();
 
+    // setter for the game's difficulty
     void set_difficulty(int difficulty);
 
     // the current dialog node
@@ -74,10 +76,12 @@ public:
 
     // is the current stage a quiz?
     bool is_quiz();
+
+    // is the current stage the memory game?
     bool is_memory();
 
-    int
-    current_act();
+    // returns the current act to display in the UI
+    int current_act();
 
 private:
     // the player's score

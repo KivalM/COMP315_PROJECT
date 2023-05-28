@@ -4,7 +4,14 @@
 #include <string>
 #include "dialog.h"
 
-// Narrator introduction
+/*
+    This file represents the first stage of the game.
+    It contains the dialog nodes for the first stage.
+
+    Each dialog node is represented by a Dialog struct.
+    The pointer to the next dialog node is stored in the next field.
+*/
+
 inline extern Dialog dialog_0_19 = create_stage_end("End of stage 1", 2, 14);
 inline extern Dialog dialog_0_18 = create_npc_dialog("I hope you mean it, Conan. The department's future rests in your hands. Don't let us down.", 2, 0, &dialog_0_19);
 inline extern Dialog dialog_0_17 = create_npc_dialog("You won't be disappointed, Captain. I'll give it my all. This is my shot at redemption, and I won't let it slip away.", 0, 0, &dialog_0_18);

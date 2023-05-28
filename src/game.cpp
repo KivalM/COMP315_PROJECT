@@ -19,15 +19,23 @@ Game::Game()
     // initialize the dialog tree
     current = stages[0];
 
-    // initialize the quiz
+    // initialize the score
     score = 75;
 
+    // call the function to randomize the quiz
+    // as well as build the quiz linked list
     randomize_quiz();
 }
 
 Game::~Game()
 {
     delete[] characters;
+
+    // delete the data at the additional questions
+    delete quiz_one[7].next;
+    delete quiz_two[7].next;
+    delete quiz_three[7].next;
+    delete quiz_four[7].next;
 }
 
 void Game::set_difficulty(int difficulty)
@@ -37,14 +45,17 @@ void Game::set_difficulty(int difficulty)
 
 void Game::randomize_quiz()
 {
+    // variable to choose the number of questions
     int quiz_len = 8;
 
+    // shuffle the questions
     std::random_device rd;
     std::mt19937 rng(rd());
 
+    // the size of stage 1 questions
     int size = 17;
-
     std::shuffle(stage_1_questions, stage_1_questions + size, rng);
+
     // fill the question arrays
     for (int i = 0; i < quiz_len; i++)
     {
@@ -52,11 +63,13 @@ void Game::randomize_quiz()
         string choices[4] = {q->choices[0], q->choices[1], q->choices[2], q->choices[3]};
         quiz_one[i] = create_choice_mcq(q->question, nullptr, choices, q->answer_index);
     }
+
     // now point each question to the next
     for (int i = 0; i < quiz_len - 1; i++)
     {
         quiz_one[i].next = &quiz_one[i + 1];
     }
+
     // set the last question to point to the stage end
     quiz_one[quiz_len - 1].next = new Dialog(create_stage_end("You have completed the first stage quiz!", 1, 0));
 
@@ -175,6 +188,8 @@ void Game::incorrect_answer()
 
     if (score == 0)
     {
+        // game over
+        // we will point the current node to the game over node
         stage = STAGE_FAIL;
         current = &stage_fail_root;
         current_stage = 12;

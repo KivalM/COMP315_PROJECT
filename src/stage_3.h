@@ -4,7 +4,13 @@
 #include <string>
 #include "dialog.h"
 
-// Narrator introduction
+/*
+    This file represents the fourth stage of the game.
+    It contains the dialog nodes for the fourth stage.
+
+    Each dialog node is represented by a Dialog struct.
+    The pointer to the next dialog node is stored in the next field.
+*/
 
 inline extern Dialog dialog_3_21 = create_stage_end("As the conversation between Conan and Vincent came to a close, the room fell into an uneasy stillness. Shadows enveloped the space, concealing the secrets that lingered in the air. Conan's sharp gaze pierced through the smoke-filled atmosphere, his mind a labyrinth of deduction and speculation. Though Vincent's words danced upon the edge of truth and deception, Conan remained vigilant, his senses honed to the subtlest of cues. As he bid Vincent farewell, a heavy silence whispered promises of a relentless pursuit for justice. The night was far from over, and the winding path of the investigation grew ever more treacherous. In the depths of his thoughts, Conan knew that hidden beneath the veil of innocence, the darkest truths lay waiting to be uncovered. With a steely resolve, he stepped into the night, ready to chase the shadows until the final piece of the puzzle fell into place.", 1, 3);
 inline extern Dialog dialog_3_20 = create_npc_dialog("Odd indeed, detective. Thomas is usually quite reliable in his duties. The fact that he lost sight of Marcus raises questions. One would think he'd have a keen eye on the suspects, especially with so much at stake. But who am I to judge? Just an observer in this twisted game of shadows.", 0, 3, &dialog_3_21);
@@ -16,7 +22,6 @@ inline extern Dialog dialog_3_15 = create_npc_dialog("Yes, the bond between you 
 inline extern Dialog dialog_3_14 = create_npc_dialog("Tragedy doesn't even begin to describe it, detective. Elizabeth's death has left me utterly stunned, shaken to my very core. We had a bond, you know. A bond forged through trust and loyalty. I can't believe someone would dare to harm her.", 7, 3, &dialog_3_15);
 inline extern Dialog dialog_3_13 = create_npc_dialog("Vincent, it's quite a scene we have here. Elizabeth, the one you were so close to, meeting such an unfortunate end. A true tragedy indeed.", 0, 3, &dialog_3_14);
 inline extern Dialog dialog_3_12 = create_npc_dialog("The mansion's somber embrace seemed to hold its breath as Conan ventured deeper into its murky depths. Every step echoed with a tinge of apprehension, for he knew that behind the next door, another enigma awaited. And there, in a dimly lit office, sat Vincent Delacroix, a man of secrets and deceit. A mere glance exchanged between them carried the weight of a thousand unspoken truths, setting the stage for a perilous exchange of words that would determine the fate of this twisted tale.", 1, 3, &dialog_3_13);
-
 inline extern Dialog dialog_3_11 = create_npc_dialog("(straightening his fedora, determination etched on his face) The shadows are my playground, Olivia. And the truth... it shall be revealed, one clue at a time.", 0, 3, &dialog_3_12);
 inline extern Dialog dialog_3_10 = create_npc_dialog("(leaning closer, a glimmer of hope in her eyes) Find that truth, Detective. Bring justice to Elizabeth's memory. But tread carefully, for the shadows hold their secrets close, and danger lurks in the alleys of the unknown.", 6, 3, &dialog_3_11);
 inline extern Dialog dialog_3_9 = create_npc_dialog("(smirking) Indeed, trust is a fragile currency in these labyrinthine corridors of suspicion. But fear not, Miss Montgomery. I have a knack for unraveling the tangled threads of deceit. And with your guidance, we shall uncover the truth that lurks beneath the surface.", 0, 3, &dialog_3_10);

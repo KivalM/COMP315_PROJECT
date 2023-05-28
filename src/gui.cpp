@@ -47,9 +47,8 @@ void GUI::main_menu()
                       { this->game_settings(); return ""; }});
     w->bind("how_to_play", {[this](const std::string &r) -> std::string
                             { this->how_to_play(); return ""; }});
-    w->bind(
-        "quit", [this](const std::string &r) -> std::string
-        { w->terminate(); return ""; });
+    w->bind("quit", [this](const std::string &r) -> std::string
+            { w->terminate(); return ""; });
 }
 
 void GUI::how_to_play()

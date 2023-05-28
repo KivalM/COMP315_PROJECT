@@ -7,6 +7,12 @@
 </head>
 
 <body>
+
+
+    <div id="subtitle">
+        Match the images to unlock the next stage
+    </div>
+
     <div class="grid" id="grid" onclick="window.callback()">
         <!-- Generating a 4x4 grid of images -->
         <div id="00" class="grid-item" onclick="event.stopPropagation(); window.callback_00()"></div>
@@ -36,13 +42,31 @@
         background-color: #000000;
     }
 
+    #title {
+        text-align: center;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1vw;
+
+
+    }
+
+    #subtitle {
+        text-align: center;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1vw;
+        height: 3vh;
+        padding-top: 1vh;
+    }
+
 
     .grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 1vw;
         grid-auto-rows: auto;
-        height: 100vh;
+        height: 96vh;
         width: 100vw;
         padding: 1vw;
         background-image: url("../img/bg/1.png");

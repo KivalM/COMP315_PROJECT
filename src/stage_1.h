@@ -3,6 +3,14 @@
 #include <string>
 #include "dialog.h"
 
+/*
+    This file represents the second stage of the game.
+    It contains the dialog nodes for the second stage.
+
+    Each dialog node is represented by a Dialog struct.
+    The pointer to the next dialog node is stored in the next field.
+*/
+
 inline extern Dialog dialog_1_15 = create_stage_end("This is end of stage 2.", 2, 14);
 inline extern Dialog dialog_1_14 = create_npc_dialog("In this perilous stage, Detective Conan had uncovered vital clues. The blood-soaked cheque, Marcus's pen, the missing weapon, the redhead hair strand, and the meticulous timing all formed pieces of a dark puzzle. With each deduction, he moved closer to unraveling the truth behind Elizabeth Killingsworth's murder.", 1, 2, &dialog_1_15);
 inline extern Dialog dialog_1_13 = create_npc_dialog("(firmly): The window, a potential portal for the perpetrator. An avenue for intrusion or a means of evasion.", 0, 2, &dialog_1_14);

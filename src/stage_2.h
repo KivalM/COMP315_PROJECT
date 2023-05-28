@@ -4,7 +4,14 @@
 #include <string>
 #include "dialog.h"
 
-// Narrator introduction
+/*
+    This file represents the second stage of the game.
+    It contains the dialog nodes for the third stage.
+
+    Each dialog node is represented by a Dialog struct.
+    The pointer to the next dialog node is stored in the next field.
+*/
+
 inline extern Dialog dialog_2_44 = create_stage_end("Their conversation ended, both Detective Conan and Thomas Reynolds understood the weight of their task. The path to uncovering the truth would be treacherous, but they were determined to bring justice to the shadows that surrounded them.", 1, 3);
 inline extern Dialog dialog_2_43 = create_npc_dialog("I couldn't agree more, Mr. Reynolds. Together, we shall shed light on the shadows and reveal the hidden truths that lie within.", 0, 3, &dialog_2_44);
 inline extern Dialog dialog_2_42 = create_npc_dialog("(Nods, a glimmer of determination in his eyes) That it is, Detective. Elizabeth deserves justice, and we must uncover the darkness lurking within these walls.", 4, 3, &dialog_2_43);
@@ -22,7 +29,6 @@ inline extern Dialog dialog_2_31 = create_npc_dialog("Detective Conan, at your s
 inline extern Dialog dialog_2_30 = create_npc_dialog("(Gazes at Conan with suspicion) Who's asking?", 4, 3, &dialog_2_31);
 inline extern Dialog dialog_2_29 = create_npc_dialog("Mr. Reynolds, a moment of your time, if you please.", 0, 3, &dialog_2_30);
 inline extern Dialog dialog_2_28 = create_npc_dialog("Detective Conan encountered Thomas Reynolds, Elizabeth's loyal bodyguard, in the dimly lit hallway of the mansion. Thomas's stern expression and alert posture hinted at his years of experience in protecting his clients.", 1, 3, &dialog_2_29);
-
 inline extern Dialog dialog_2_27 = create_npc_dialog("With that, Detective Conan left Amelia in the dimly lit hallway, her eyes filled with a mix of grief, resentment, and a glimmer of hope that the truth would ultimately be revealed.", 1, 3, &dialog_2_28);
 inline extern Dialog dialog_2_26 = create_npc_dialog("I'll do my best, Ms. Bennett. Trust that justice will prevail.", 0, 3, &dialog_2_27);
 inline extern Dialog dialog_2_25 = create_npc_dialog("(Nods, a mix of grief and resentment in her eyes) Please find the truth, Detective. The secrets that haunt this mansion must be unraveled.", 5, 3, &dialog_2_26);
@@ -40,7 +46,6 @@ inline extern Dialog dialog_2_14 = create_npc_dialog("Tell me, where were you wh
 inline extern Dialog dialog_2_13 = create_npc_dialog("(A hint of sadness lingers in her voice) Thank you, Detective. It's a difficult time for our family. What do you need to know?", 5, 3, &dialog_2_14);
 inline extern Dialog dialog_2_12 = create_npc_dialog("Ms. Bennett, isn't it? My deepest condolences for your loss. Mind if we have a little chat?", 0, 3, &dialog_2_13);
 inline extern Dialog dialog_2_11 = create_npc_dialog("Detective Conan bumped into Amelia Bennett in a dimly lit hallway of the mansion. He couldn't help but notice the tension in her eyes, hinting at a troubled past. The detective approached her cautiously, ready to delve into the depths of her strained relationship with Elizabeth.", 1, 3, &dialog_2_12);
-
 inline extern Dialog dialog_2_10 = create_npc_dialog("Conan's gaze intensified, probing for any hidden truths or inconsistencies. Satisfied for the moment, he moved on to the next suspect, leaving Marcus to contemplate the shadows that danced around him, threatening to reveal his darkest secrets.", 1, 3, &dialog_2_11);
 inline extern Dialog dialog_2_9 = create_npc_dialog("(Defensively) I assure you, Detective, I had no knowledge of her tragic fate until I stumbled upon the scene. The shock of the discovery still lingers within me.", 3, 3, &dialog_2_10);
 inline extern Dialog dialog_2_8 = create_npc_dialog("(With a hint of curiosity) Interesting. Your ignorance of Elizabeth's demise until you arrived at the crime scene piques my interest. A fortunate coincidence, or perhaps something more?", 0, 3, &dialog_2_9);

@@ -4,7 +4,13 @@
 #include <string>
 #include "dialog.h"
 
-// Narrator introduction
+/*
+    This file represents the fail stage of the game.
+    It contains the dialog nodes for the fail stage.
+
+    Each dialog node is represented by a Dialog struct.
+    The pointer to the next dialog node is stored in the next field.
+*/
 
 inline extern Dialog dialog_fail_13 = create_stage_end("With a heavy heart, Conan rose from his seat, his resolve unyielding. The room grew darker as he stepped into the unknown, leaving behind a void that only he could fill. The city's secrets awaited, and it was time to prove that even in defeat, a detective's spirit could not be extinguished.", 1, 0);
 inline extern Dialog dialog_fail_12 = create_npc_dialog("I won't let this setback define me, Captain. I'll continue to search for the truth, even if it means working from the shadows. The city needs justice, and I won't rest until it's served.", 0, 0, &dialog_fail_13);

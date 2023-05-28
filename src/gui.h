@@ -6,12 +6,15 @@
 #include "utils.h"
 using namespace std;
 
+// forward declaration of the MemoryGame class
 class MemoryGame;
 
 class GUI
 {
 public:
+    // constructor
     GUI();
+
     // function to start the GUI
     void start();
 
@@ -35,6 +38,8 @@ public:
     void draw_answer_stage(int answer);
     void draw_dialogue_stage();
     void draw_memory_stage();
+
+    // a simple handler to handle the click events on the memory stage
     void memory_stage_event_handler(int x, int y);
 
     // update the meter on the screen
@@ -53,11 +58,23 @@ private:
     vector<string> html_templates;
 
     // pointer to the game object
-    Game *game = new Game();
+    Game *game = nullptr;
 
     // pointer to matching game
     MemoryGame *mg = nullptr;
 };
+
+/*
+    The following classes are used to implement the matching game.
+    It consists of two classes, Cell and MemoryGame.
+    Cell is a template class that holds the value of the cell and its position on the board.
+    MemoryGame is the main class that holds the board and the logic of the game.
+
+    The reason they are in the gui.h file is because they are tightly coupled with the gui, and will not really be used anywhere else.
+    The other reason is that creating its own header file for them leads to a circular dependency between gui.h and utils.h
+
+
+*/
 
 template <typename T>
 class Cell
@@ -82,7 +99,10 @@ private:
     // which will double as a unique id
     // ranges from 1 to 8 eg. 2 of each value
 
+    // 4x4 grid of cells
     Cell<int> cells[4][4];
+
+    // pointers to the two flipped cells
     Cell<int> *first_cell = nullptr;
     Cell<int> *second_cell = nullptr;
 
@@ -91,16 +111,24 @@ private:
 
     webview::webview *ui_context = nullptr;
 
+    // this function checks if the two flipped cells match
+    bool checkForMatch();
+
+    // this function draws the initial state of the game
     void draw();
+
+    // this function flips and redraws the cell
     void flip_cell(int x, int y, bool isFlipped);
 
 public:
     MemoryGame(webview::webview *w, std::vector<std::string> images);
     ~MemoryGame();
 
+    // this handles a click on cell (x, y), (-1, -1) means no cell was clicked
     void click(int x, int y);
 
-    bool checkForMatch();
+    // this function checks if the game is finished
+    // so the gui can move on to the next stage
     bool is_finished();
 };
 

@@ -17,7 +17,8 @@ namespace utils
 {
     // load an image from the disk and convert it to base64
     string load_img_to_base64(const string &path);
-    // encode a string to base64
+
+    // encode a string with base64
     string base64_encode(const string &input);
 
     // load the images and html templates
@@ -40,7 +41,7 @@ namespace utils
                   const string &id, const string &text);
 
     /*
-     *   A template function to check if a class has a to_string() function
+     *   A template struct to check if a class has a to_string() function
      */
     template <typename T>
     struct has_to_string
