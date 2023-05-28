@@ -83,6 +83,9 @@ public:
     // returns the current act to display in the UI
     int current_act();
 
+    // int to hold the current question of each quiz
+    int current_question = 0;
+
 private:
     // the player's score
     int score = 75;

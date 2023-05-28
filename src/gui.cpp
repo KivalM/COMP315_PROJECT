@@ -67,7 +67,6 @@ void GUI::game_settings()
 {
     // clear any data at old game pointer
     delete this->game;
-    this->game = nullptr;
 
     // create a new game object
     game = new Game();
@@ -126,6 +125,7 @@ void GUI::stage_handler()
     cout << "Stage Handler" << endl;
     if (game->is_quiz())
     {
+        game->current_question = 1;
         draw_question_stage();
     }
     else
@@ -167,6 +167,8 @@ void GUI::draw_question_stage()
     // set callbacks
     if (dialog->type == DialogType::QUESTION)
     {
+        utils::set_text(w.get(), "char-name", "Q " + to_string(game->current_question) + "/8");
+
         cout << "Drawing Question" << endl;
         // onclick we will go to the next dialog
         utils::set_hidden(w.get(), "options", false);
@@ -207,6 +209,8 @@ void GUI::draw_question_stage()
         {
             utils::set_hidden(w.get(), "option_4", true);
         }
+
+        game->current_question++;
     }
     else
     {
