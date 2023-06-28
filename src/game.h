@@ -12,7 +12,6 @@
 
 #include "quiz.h"
 
-#include <thread>
 #include <chrono>
 #include <algorithm>
 #include <random>
