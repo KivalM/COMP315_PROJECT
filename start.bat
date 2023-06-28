@@ -14,6 +14,7 @@ set SOURCE_FILES=%SOURCE_DIR%\main.cpp ^
 g++ -O3 -s -static-libgcc -static-libstdc++ ^
     %SOURCE_FILES% -std=c++17 -mwindows ^
     -Ilibs\webview ^
+    -static ^
     -Ilibs\webview2\build\native\include ^
     -ladvapi32 -lole32 -lshell32 -lshlwapi -luser32 -lversion ^
     -o %OUTPUT_DIR%\wrath.exe
